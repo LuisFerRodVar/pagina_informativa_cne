@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FootercComponent } from './footerc.component';
+import { FooterSocialComponent } from './footer-social.component';
 
-describe('FootercComponent', () => {
-  let component: FootercComponent;
-  let fixture: ComponentFixture<FootercComponent>;
+describe('FooterSocialComponent', () => {
+  let component: FooterSocialComponent;
+  let fixture: ComponentFixture<FooterSocialComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FootercComponent]
+      imports: [FooterSocialComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FootercComponent);
+    fixture = TestBed.createComponent(FooterSocialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
