@@ -2,7 +2,12 @@ nav{
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  justify-content: space-around;
+  padding: 2rem;
 }
-span:hover{
-  background-color: green;
+section{
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
 }
+
