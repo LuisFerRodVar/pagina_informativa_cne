@@ -68,3 +68,7 @@ label {
   font-size: inherit;
   color: inherit;
 }
+/* General css*/
+html{
+  font-size: 10px;
+}
