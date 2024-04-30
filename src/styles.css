@@ -1,7 +1,9 @@
 /*Variables CSS */
 :root{
-
-
+  --background-color: #FFFFFF;
+  --main-color: #23D0EC;
+  --detail-color: #EFEFEF;
+  --title-color: #FF8B18;
 }
 * {
   margin: 0;
