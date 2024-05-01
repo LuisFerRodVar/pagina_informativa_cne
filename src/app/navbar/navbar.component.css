@@ -4,10 +4,23 @@ nav{
   gap: 2rem;
   justify-content: space-around;
   padding: 2rem;
+  align-items: center;
+  background-color: var(--background-color);
 }
 section{
   display: flex;
   flex-direction: row;
   gap: 3rem;
+}
+span{
+  font-size: 2rem;
+}
+input{
+  font-size: 2rem;
+  background-color: var(--detail-color);
+  border-radius: 2rem;
+}
+.active{
+  color: var(--main-color);
 }
 
