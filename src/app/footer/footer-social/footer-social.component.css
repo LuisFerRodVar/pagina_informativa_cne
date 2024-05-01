@@ -1,4 +1,9 @@
 div{
   display: flex;
   flex-direction: column;
+  text-align: center;
+}
+a{
+  font-size: 2rem;
+  color: var(--background-color);
 }
