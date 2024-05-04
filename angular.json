@@ -25,7 +25,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/fonts/Inter/static/inter.css",
+              "src/assets/fonts/JetBrains_Mono/static/jetbrainsmono.css",
               "src/styles.css"
+
             ],
             "scripts": [],
             "server": "src/main.server.ts",
