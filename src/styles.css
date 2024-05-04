@@ -1,5 +1,6 @@
 /*Variables CSS */
 :root{
+  --general-title-color: #00000080;
   --background-color: #FFFFFF;
   --main-color: #23D0EC;
   --detail-color: #EFEFEF;
@@ -24,7 +25,6 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: "Inter";
 }
 
 ul,
@@ -71,4 +71,13 @@ label {
 /* General css*/
 html{
   font-size: 10px;
+}
+body{
+  font-family: "Inter";
+}
+.general__title{
+  font-size: 2.4rem;
+  text-align: center;
+  font-family: "JetBrainsMono";
+  color: var(--general-title-color);
 }
