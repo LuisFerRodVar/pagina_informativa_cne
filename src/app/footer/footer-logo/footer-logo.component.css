@@ -6,6 +6,10 @@ footer{
 }
 span{
   display: block;
+  font-size: 1.4rem;
+}
+small{
+  font-size: 1.4rem;
 }
 div{
 

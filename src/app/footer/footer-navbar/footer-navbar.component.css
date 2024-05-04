@@ -2,11 +2,11 @@ nav{
   display: flex;
   flex-direction: column;
   font-weight: bold;
+  gap: 2rem;
 }
 span{
   font-size: 2rem;
   font-weight: bold;
-  color: var(--background-color);
 }
 .active{
   color: var(--title-color);

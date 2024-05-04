@@ -16,6 +16,8 @@ span{
   font-size: 2rem;
 }
 input{
+  border: none;
+  padding: 0.7rem;
   font-size: 2rem;
   background-color: var(--detail-color);
   border-radius: 2rem;
