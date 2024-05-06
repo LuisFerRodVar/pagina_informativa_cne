@@ -2,22 +2,22 @@
   @if (option == 1){
   <li class="active">Misión</li>
   }@else{
-  <li>Misión</li>
+  <li (click) = "toggleOption(1)">Misión</li>
   }
   @if (option == 2){
   <li class="active">Visión</li>
   }@else{
-  <li>Visión</li>
+  <li (click) = "toggleOption(2)">Visión</li>
   }
   @if (option == 3){
   <li class="active">Objetivos</li>
   }@else{
-  <li>Objetivos</li>
+  <li (click) = "toggleOption(3)">Objetivos</li>
   }
   @if (option == 4){
   <li class="active">Metas</li>
   }@else{
-  <li>Metas</li>
+  <li (click) = "toggleOption(4)">Metas</li>
   }
 </ul>
 <p>

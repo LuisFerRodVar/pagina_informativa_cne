@@ -80,5 +80,5 @@ body{
   text-align: center;
   font-family: "JetBrainsMono";
   color: var(--general-title-color);
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 }
