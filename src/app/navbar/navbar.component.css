@@ -20,6 +20,10 @@ section {
 span {
   transition: all 300ms ease-in-out;
   font-size: 2rem;
+  cursor: pointer;
+}
+span:hover{
+  color: var(--main-color);
 }
 
 input {

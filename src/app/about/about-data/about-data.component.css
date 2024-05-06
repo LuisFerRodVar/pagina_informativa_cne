@@ -14,8 +14,13 @@ li {
   padding: 0.7rem 2rem;
   background-color: var(--detail-color);
   border-radius: 10px;
-
+  transition: all 300ms ease-in-out;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+li:hover{
+  background-color: var(--main-color);
+  color: var(--background-color);
 }
 .active{
   background-color: var(--main-color);
