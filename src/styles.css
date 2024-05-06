@@ -1,6 +1,7 @@
 /*Variables CSS */
 :root{
   --general-title-color: #00000080;
+  --general-font-color: #00000050;
   --background-color: #FFFFFF;
   --main-color: #23D0EC;
   --detail-color: #EFEFEF;
@@ -81,4 +82,10 @@ body{
   font-family: "JetBrainsMono";
   color: var(--general-title-color);
   margin: 1.5rem 0;
+}
+.general__text{
+  font-size: 1.8rem;
+  display: block;
+  margin: 3rem 4rem;
+  color: var(--general-font-color);
 }

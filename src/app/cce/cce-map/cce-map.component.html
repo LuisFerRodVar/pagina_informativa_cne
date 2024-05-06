@@ -1,0 +1,6 @@
+<nav>
+  @for (place of places; track place){
+  <span (click) = "setCurrentPlace(place.id)" >{{place.name}}</span>
+  }
+</nav>
+<div [innerHTML]=places[currentPlace].ubication></div>
