@@ -1,0 +1,24 @@
+h1{
+  text-align: center;
+  color: var(--main-color);
+  font-size: 2.4rem;
+}
+span{
+  position: relative;
+  display: block;
+  padding: 1rem;
+}
+span::before{
+  content: "";
+  height: 1px;
+  width: 90%;
+  left: 5%;
+  top: 0;
+  position: absolute;
+  background-color: black;
+}
+table{
+  border-spacing: 2rem;
+  font-size: 2rem;
+  margin: 0 auto;
+}

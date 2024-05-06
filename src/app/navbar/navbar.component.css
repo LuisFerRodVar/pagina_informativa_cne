@@ -14,6 +14,7 @@ section{
   gap: 3rem;
 }
 span{
+  transition: all 300ms ease-in-out;
   font-size: 2rem;
 }
 input{
