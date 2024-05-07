@@ -40,6 +40,8 @@ article {
 
   padding-top: 1rem;
   padding-bottom: 4rem;
+
+  transition: all 0.6s ease-in-out;
 }
 
 .close {
@@ -65,11 +67,11 @@ article {
   color: #777777;
 }
 
-.open{
+.answer{
   width: 60vw;
   height: auto;
 
-  min-height: 20rem;
+  min-height: 15rem;
 
   font-size: 1.5rem;
 
@@ -83,6 +85,28 @@ article {
   color: #777777;
   border-radius: 20px;
 
- 
+  
 
 }
+
+
+.question .open {
+  display: none;
+}
+
+.question.open .open {
+  display: block;
+  padding: 2rem;
+}
+
+.close.active{
+  background-color: #39dff8;
+  color: #eeeeef;
+}
+
+.close.active p {
+  color: #eeeeef;
+}
+
+
+
