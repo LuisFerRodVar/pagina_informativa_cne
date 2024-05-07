@@ -45,7 +45,7 @@ article {
 }
 
 .close {
-  width: 70vw;
+  width: 60vw;
   height: 4rem;
 
   display: flex;
@@ -68,7 +68,7 @@ article {
 }
 
 .answer{
-  width: 60vw;
+  width: 50vw;
   height: auto;
 
   min-height: 15rem;

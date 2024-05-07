@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faPlus,
-  faMinus,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus, IconDefinition  } from '@fortawesome/free-solid-svg-icons';
 
 interface FAQ {
   question: string;
@@ -25,10 +21,12 @@ export class HomeFaqComponent {
 
   faIcon1: IconDefinition = faPlus;
   faIcon2: IconDefinition = faPlus;
-  activeQuestionId: string | null = null;
+  faIcon3: IconDefinition = faPlus;
+  faIcon4: IconDefinition = faPlus;
 
   toggleItem(id: string) {
     const element = document.getElementById(id);
+    
     if (element) {
       const isOpen = element.classList.contains('open');
       const questions = document.querySelectorAll('.question');
@@ -43,18 +41,42 @@ export class HomeFaqComponent {
 
       if (!isOpen) {
         element.classList.add('open');
-        this.activeQuestionId = id;
         const closeButton = element.querySelector('.close');
         if (closeButton) {
           closeButton.classList.add('active');
         }
+        if (id === 'faq1') {
+          this.faIcon1 = this.faMinus;
+          this.faIcon2 = this.faPlus;
+          this.faIcon3 = this.faPlus;
+          this.faIcon4 = this.faPlus;
+        } else if (id === 'faq2') {
+          this.faIcon1 = this.faPlus;
+          this.faIcon2 = this.faMinus;
+          this.faIcon3 = this.faPlus;
+          this.faIcon4 = this.faPlus;
+        } else if (id === 'faq3') {
+          this.faIcon1 = this.faPlus;
+          this.faIcon2 = this.faPlus;
+          this.faIcon3 = this.faMinus;
+          this.faIcon4 = this.faPlus;
+        } else if (id === 'faq4') {
+          this.faIcon1 = this.faPlus;
+          this.faIcon2 = this.faPlus;
+          this.faIcon3 = this.faPlus;
+          this.faIcon4 = this.faMinus;
+        }
       } else {
-        this.activeQuestionId = null;
+        if (id === 'faq1') {
+          this.faIcon1 = this.faPlus;
+        } else if (id === 'faq2') {
+          this.faIcon2 = this.faPlus;
+        } else if (id === 'faq3') {
+          this.faIcon3 = this.faPlus;
+        } else if (id === 'faq4') {
+          this.faIcon4 = this.faPlus;
+        }
       }
     }
-  }
-
-  isQuestionActive(id: string): boolean {
-    return this.activeQuestionId === id;
   }
 }
