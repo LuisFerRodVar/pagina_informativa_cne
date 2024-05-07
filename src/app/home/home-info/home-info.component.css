@@ -12,7 +12,7 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    color: #ff8b18;
+    color: #939292;
     font-size: 2rem;
     padding: 0 3%;
 }
@@ -77,10 +77,14 @@
     margin-bottom: 0.5rem;
 }
 
-.__content-info button {
+.__content-info a {
     width: 20rem; 
     height: 5rem;
     padding: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
     border-radius: 5px;
@@ -93,6 +97,6 @@
     cursor: pointer;
 }
 
-.__content-info button:hover {
+.__content-info a:hover {
     background-color: #fe952d;
 }

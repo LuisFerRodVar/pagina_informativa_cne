@@ -2,6 +2,7 @@ section {
     height: 100vh; 
     background-image: url("../../../assets/img/home/home.webp");
     background-position: center; 
+    background-repeat: no-repeat;
     display: flex; 
     justify-content: center; 
     align-items: center;
