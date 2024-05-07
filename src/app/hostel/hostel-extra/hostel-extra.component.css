@@ -1,0 +1,20 @@
+table{
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+  width: 80%;
+  margin-bottom: 2rem;
+}
+thead{
+  font-weight: bold;
+  color: var(--title-color);
+  border-spacing: 3rem;
+}
+thead td{
+  padding: 2rem;
+}
+td{
+  border: 1px solid #C7C7C7;
+  border-collapse: collapse;
+  padding: 1rem;
+}
