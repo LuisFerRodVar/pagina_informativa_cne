@@ -8,10 +8,13 @@ import { HomeFaqComponent } from './home-faq/home-faq.component';
 import { HomeScheduleComponent } from './home-schedule/home-schedule.component';
 
 
+
+
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HomeHeaderComponent, HomeAboutmeComponent, HomeActionsComponent, HomeActionsComponent, HomeInfoComponent, HomeNewComponent, HomeFaqComponent, HomeScheduleComponent],
+  imports: [ HomeHeaderComponent, HomeAboutmeComponent, HomeActionsComponent, HomeActionsComponent, HomeInfoComponent, HomeNewComponent, HomeFaqComponent, HomeScheduleComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
