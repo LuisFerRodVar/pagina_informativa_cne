@@ -1,7 +1,6 @@
 section {
     height: 100vh; 
     background-image: url("../../../assets/img/home/home.webp");
-    background-size: cover; 
     background-position: center; 
     display: flex; 
     justify-content: center; 
@@ -12,6 +11,6 @@ section {
 h1 {
     font-size: 4rem;
     font-weight: 700;
-    text-align: center; /* Centra el texto horizontalmente */
-    color: white; /* Cambia el color del texto para que sea legible */
+    text-align: center; 
+    color: white; 
 }
