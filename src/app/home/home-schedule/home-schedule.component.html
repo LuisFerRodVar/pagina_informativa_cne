@@ -1,1 +1,40 @@
-<p>home-schedule works!</p>
+<section>
+    <div class="__title__about">
+        <h2>Horarios</h2>
+    </div>
+    <div class="__body__about">
+        <div class="text">
+            Se pone a dispocicion los horarios de los diferentes servicios para atencion al publico
+        </div>
+        <article id="Sch1" class="schedule" (click)="toggleItem('Sch1')">
+            <div class="close">
+                <fa-icon [icon]="faIcon10"></fa-icon>
+                <p>Horario del servicio</p>
+            </div>
+            <div class="answer open">
+                <p>
+                    1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+                <p>
+                    2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+            </div>
+        </article>
+        <!-- Repite el mismo formato para cada pregunta frecuente -->
+        <article id="Sch2" class="schedule" (click)="toggleItem('Sch2')">
+            <div class="close">
+                <fa-icon [icon]="faIcon11"></fa-icon>
+                <p>Horario del servicio</p>
+            </div>
+            <div class="answer open">
+                <p>
+                    1. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+                <p>
+                    2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+            </div>
+        </article>
+
+    </div>
+</section>
