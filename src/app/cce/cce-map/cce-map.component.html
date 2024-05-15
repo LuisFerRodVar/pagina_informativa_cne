@@ -1,16 +1,44 @@
 <nav>
   @if (carousel == 0){
-    <button class="disabled" disabled (click) = "navigateCarousel(-1)" value="<">{{"<"}}</button>
-  }@else{
-    <button (click) = "navigateCarousel(-1)" value="<">{{"<"}}</button>
+  <button class="disabled" disabled (click)="navigateCarousel(-1)" value="<">{{"<"}}</button>
+  } @else{
+      <button (click)="navigateCarousel(-1)" value="<">{{"<"}}</button>
   }
   @for (place of places.slice(carousel, carousel + 4); track place){
-  <span (click) = "setCurrentPlace(place.id)" >{{place.name}}</span>
+    <span (click)="setCurrentPlace(place.id)">{{place.name}}</span>
   }
   @if (carousel == places.length - 4){
-    <button class="disabled" disabled (click) = "navigateCarousel(1)" value="<">{{">"}}</button>
-  }@else{
-    <button (click) = "navigateCarousel(1)" value="<">{{">"}}</button>
+    <button class="disabled" disabled (click)="navigateCarousel(1)" value="<">{{">"}}</button>
+  } @else{
+  <button (click)="navigateCarousel(1)" value="<">{{">"}}</button>
   }
 </nav>
 <div [innerHTML]=places[currentPlace].ubication></div>
+<table>
+  <thead>
+    <tr>
+      <td>Cargo</td>
+      <td>Nombre</td>
+      <td>Email</td>
+    </tr>
+  </thead>
+  <tr>
+    <td colspan="3" class="title">Comité ejecutivo</td>
+  </tr>
+  @for (person of places[currentPlace].committee; track person){
+  <tr>
+    <td class="job">{{person.job}}</td>
+    <td>{{person.name}}</td>
+    <td>{{person.email}}</td>
+  </tr>
+  }
+  <tr>
+    <td colspan="3" class="title">Equipo de trabajo</td>
+  </tr>
+  @for (person of places[currentPlace].workTeam; track person){
+  <tr>
+    <td class="job">{{person.job}}</td>
+    <td>{{person.name}}</td>
+    <td>{{person.email}}</td>  </tr>
+  }
+</table>

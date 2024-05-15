@@ -39,3 +39,31 @@ button{
 .disabled{
   opacity: 0;
 }
+table {
+  font-size: 1.8rem;
+  border-collapse: collapse;
+  border: 2px solid #C7C7C7; /* Borde de la tabla */
+
+}
+td, th {
+  border: 1px solid #C7C7C7; /* Borde de las celdas */
+  padding: 8px; /* Espaciado interno para mejorar la legibilidad */
+}
+table{
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.title{
+  font-weight: bold;
+  text-align: center;
+}
+thead{
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  color: var(--title-color);
+}
+.job{
+  font-weight: bold;
+}
