@@ -1,0 +1,28 @@
+main{
+  font-size: 2rem;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  justify-content: space-around;
+}
+div{
+  display: flex;
+  flex-direction: column;
+}
+section{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+nav{
+  flex-basis: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.active{
+  color: var(--main-color);
+}

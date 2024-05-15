@@ -4,7 +4,12 @@
   }@else{
     <button (click) = "toggleOpen()"><fa-icon [icon]="faX"></fa-icon></button>
   }
-  <app-menu-mobile />
+  @if (open){
+    <app-menu-mobile />
+  }@else{
+
+    <app-menu-mobile class="hidden" />
+  }
   <app-navbar />
   <main>
     <router-outlet />
