@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CceMapComponent {
   constructor(private sanitizer: DomSanitizer) {}
-
+  carousel = 0;
   currentPlace = 0;
   places = [{
     id: 0,
@@ -39,5 +39,8 @@ export class CceMapComponent {
   }]
   setCurrentPlace(newPlace:number){
     this.currentPlace = newPlace;
+  }
+  navigateCarousel(nav:number){
+    this.carousel += nav;
   }
 }

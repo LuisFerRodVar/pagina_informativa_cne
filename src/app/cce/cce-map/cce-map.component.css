@@ -30,3 +30,12 @@ div{
   position: relative;
 }
 
+button{
+  font-size: 2rem;
+  border: none;
+  background-color: var(--background-color);
+  cursor: pointer;
+}
+.disabled{
+  opacity: 0;
+}

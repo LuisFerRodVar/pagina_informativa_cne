@@ -1,6 +1,16 @@
 <nav>
-  @for (place of places; track place){
+  @if (carousel == 0){
+    <button class="disabled" disabled (click) = "navigateCarousel(-1)" value="<">{{"<"}}</button>
+  }@else{
+    <button (click) = "navigateCarousel(-1)" value="<">{{"<"}}</button>
+  }
+  @for (place of places.slice(carousel, carousel + 4); track place){
   <span (click) = "setCurrentPlace(place.id)" >{{place.name}}</span>
+  }
+  @if (carousel == places.length - 4){
+    <button class="disabled" disabled (click) = "navigateCarousel(1)" value="<">{{">"}}</button>
+  }@else{
+    <button (click) = "navigateCarousel(1)" value="<">{{">"}}</button>
   }
 </nav>
 <div [innerHTML]=places[currentPlace].ubication></div>
