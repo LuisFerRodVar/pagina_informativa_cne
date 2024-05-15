@@ -1,8 +1,17 @@
-footer{
+footer {
   color: var(--background-color);
   background-color: var(--main-color);
   display: flex;
   flex-direction: row;
   padding: 2rem;
   justify-content: space-evenly;
+}
+
+@media (max-width: 1070px) {
+  app-footer-navbar {
+    display: none;
+  }
+  footer{
+    flex-direction: column-reverse;
+  }
 }

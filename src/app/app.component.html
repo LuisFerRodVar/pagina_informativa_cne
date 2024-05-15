@@ -1,8 +1,8 @@
 <div>
   @if (open){
-    <button (click) = "toggleOpen()"><fa-icon [icon]="faBars"></fa-icon></button>
-  }@else{
     <button (click) = "toggleOpen()"><fa-icon [icon]="faX"></fa-icon></button>
+  }@else{
+    <button (click) = "toggleOpen()"><fa-icon [icon]="faBars"></fa-icon></button>
   }
   @if (open){
     <app-menu-mobile />

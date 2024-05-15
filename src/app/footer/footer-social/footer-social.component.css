@@ -6,3 +6,11 @@ div{
 a{
   font-size: 4rem;
 }
+@media (max-width: 1070px){
+  div{
+    justify-content: center;
+    gap: 5rem;
+    flex-direction: row;
+    margin-bottom: 4rem;
+  }
+}
