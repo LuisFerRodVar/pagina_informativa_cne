@@ -2,3 +2,31 @@ div{
   display: flex;
   flex-direction: column;
 }
+button{
+  position: fixed;
+  z-index: 2;
+  top: 2%;
+  left: 2%;
+  padding: 1rem;
+  border-radius: 50%;
+  border: none;
+  letter-spacing: 3rem;
+  text-align: justify;
+  transition: all 300ms ease-in-out;
+  background-color: var(--main-color);
+  color: var(--background-color);
+  font-size: 2rem;
+  display: none;
+}
+app-menu-mobile{
+  display: none;
+}
+/*Responsive*/
+@media (max-width: 1070px){
+  app-navbar{
+    display: none;
+  }
+  button{
+    display: block;
+  }
+}
