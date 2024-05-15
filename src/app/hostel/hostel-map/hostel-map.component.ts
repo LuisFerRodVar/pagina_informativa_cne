@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class HostelMapComponent {
   constructor(private sanitizer: DomSanitizer) { }
+  carousel = 0;
 
   currentPlace = 0;
   places = [{
@@ -35,8 +36,21 @@ export class HostelMapComponent {
     id: 4,
     name: "Guadalupe",
     ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
+  },
+  {
+    id: 5,
+    name: "Guadalupe",
+    ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
+  },
+  {
+    id: 6,
+    name: "Guadalupe",
+    ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
   }]
   setCurrentPlace(newPlace: number) {
     this.currentPlace = newPlace;
+  }
+  navigateCarousel(change: number){
+    this.carousel += change;
   }
 }
