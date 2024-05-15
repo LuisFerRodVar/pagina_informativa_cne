@@ -1,6 +1,6 @@
 <nav>
   @if (carousel == 0){
-    <button class="disabled" disabled (click) = "navigateCarousel(-1)" value="<">{{"<"}}</button>
+    <button class="disabled" disabled  value="<">{{"<"}}</button>
   }@else{
     <button (click) = "navigateCarousel(-1)" value="<">{{"<"}}</button>
   }
@@ -8,7 +8,7 @@
   <span (click) = "setCurrentPlace(place.id)" >{{place.name}}</span>
   }
   @if (carousel == places.length - 4){
-    <button class="disabled" disabled (click) = "navigateCarousel(1)" value="<">{{">"}}</button>
+    <button class="disabled" disabled  value="<">{{">"}}</button>
   }@else{
     <button (click) = "navigateCarousel(1)" value="<">{{">"}}</button>
   }

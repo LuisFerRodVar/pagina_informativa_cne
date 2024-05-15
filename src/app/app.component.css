@@ -27,7 +27,7 @@ app-menu-mobile{
 
 }
 .hidden{
-  opacity: 0;
+    display: none;
 }
 /*Responsive*/
 @media (max-width: 1070px){
