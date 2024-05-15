@@ -94,22 +94,641 @@ export class CceMapComponent {
   },
   {
     id: 1,
-    name: "Conte",
+    name: "Bambel 3",
+    committee: [
+      {
+        "job": "Coordinación",
+        "name": "Blanca Moreno Álvarez",
+        "email": "blancamore0420@gmail.com"
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "Sofía Cascante Molina",
+        "email": "sofiacascantemolina@gmail.com"
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "Stephanie Hidalgo Ruiz",
+        "email": "hidalgos1709@gmail.com"
+    },
+    {
+        "job": "Vocalía",
+        "name": "María José Valencia Prado",
+        "email": ""
+    },
+    {
+        "job": "Fiscalía",
+        "name": "Efraín Villalobos Vega",
+        "email": ""
+    }
+    ],
+    workTeam: [
+        {
+        "job": "Voluntariado",
+        "name": "Esteban Valencia Muñoz",
+        "email": "estebanvalencia740@gmail.com"
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Salud",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Seguridad",
+        "name": "Antonio Zúñiga Rojas",
+        "email": ""
+    },
+    {
+        "job": "Albergues",
+        "name": "María Prado Piedra",
+        "email": ""
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Bodegas",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "",
+        "email": ""
+    }
+    ],
     ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
   },
   {
     id: 2,
-    name: "La Mona",
+    name: "Conte Burica",
+    committee: [
+      {
+        "job": "Coordinación",
+        "name": "Laura Espiza Bejarano",
+        "email": "lauespinozabejarano@gmail.com"
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "Videlito Beajarano Bejarano",
+        "email": "bejaranovidelito@gmail.com"
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "Johnny Sanchez Bejarano",
+        "email": "johnny.sancez.bejarano@mep.go.cr"
+    },
+    {
+        "job": "Vocalía",
+        "name": "Emilio Bejarano Montezuma",
+        "email": "emiliobejaranomontezuma@gmail.com"
+    },
+    {
+        "job": "Fiscalía",
+        "name": "Ronald Montezuma Bejarano",
+        "email": "montezumar739@gmail.com"
+    }
+    ],
+    workTeam: [{
+        "job": "Voluntariado",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Salud",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Seguridad",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Albergues",
+        "name": "Otilia Bejarano Garcia",
+        "email": ""
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Bodegas",
+        "name": "Miguel Andreade Atencio",
+        "email": ""
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "Santa Jimenez Montezuma",
+        "email": "jimenezsanta449@gmail.com"
+    }],
     ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
   },
   {
     id: 3,
     name: "Golfito",
+    committee: [ {
+        "job": "Coordinación",
+        "name": "Marco Antonio Jimenez Benavides",
+        "email": ""
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "Johan Steve Rojas Montero",
+        "email": ""
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "Carmen Corrales Madrigal",
+        "email": ""
+    },
+    {
+        "job": "Vocalía",
+        "name": "Danny Veronica Caton Acevedo",
+        "email": ""
+    },
+    {
+        "job": "Fiscalía",
+        "name": "Marcos Andrey Ruiz Herrera",
+        "email": ""
+    }],
+    workTeam: [{
+        "job": "Voluntariado",
+        "name": "Victoria Hernadez Zuñiga",
+        "email": ""
+    },
+    {
+        "job": "Voluntariado",
+        "name": "Rosibel Barboza Gamboa",
+        "email": ""
+    },
+    {
+        "job": "Voluntariado",
+        "name": "Amable Herrera Gomez",
+        "email": ""
+    },
+    {
+        "job": "Voluntariado",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "Wendy Orozco Delgado",
+        "email": ""
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "Derian Guevara Hernandez",
+        "email": ""
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "Oscar Rivas Gutierrez",
+        "email": ""
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "Xinia María Castro Zamora",
+        "email": ""
+    },
+    {
+        "job": "Salud",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Seguridad",
+        "name": "Luis David Vargas Henriquez",
+        "email": ""
+    },
+    {
+        "job": "Albergues",
+        "name": "Virginia María Miranda Cabezas",
+        "email": ""
+    },
+    {
+        "job": "Albergues",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "Carlos Barrantes Leiva",
+        "email": ""
+    },
+    {
+        "job": "Bodegas",
+        "name": "Nilsson Granados Barrantes",
+        "email": ""
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "Cornelio Caballero Araya",
+        "email": ""
+    }],
     ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
   },
   {
     id: 4,
     name: "Guadalupe",
+    committee: [{
+        "job": "Coordinación",
+        "name": "Elizabeth Guevara Gomez",
+        "email": "elizaguevara201970@gmail.com"
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "Rudy Manuel Vega Chavaria",
+        "email": "rudyv316@gmail.com"
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "Sonia Guzman Jimenez",
+        "email": "soniaguzmanjimnez1984@gmail.com"
+    },
+    {
+        "job": "Vocalía",
+        "name": "Dayris Magaly Marin Amador",
+        "email": "magaly@dantalodge.com"
+    },
+    {
+        "job": "Fiscalía",
+        "name": "Arlyn Alvarado Fernandez",
+        "email": "dayi1926af@gmail.com"
+    }],
+    workTeam: [{
+        "job": "Voluntariado",
+        "name": "Maria Auxiliadora Valverde Avales",
+        "email": "mv5991122@gmail.com"
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "Marjorie Gamboa Vrags",
+        "email": "mgamboav2018@hotmail.com"
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "Juan Luis Mejia Badilla",
+        "email": "mejiasjuan137@gmail.com"
+    },
+    {
+        "job": "Salud",
+        "name": "Carlos Eduardo Castro Rojas",
+        "email": ""
+    },
+    {
+        "job": "Seguridad",
+        "name": "Mario Alberto Torres Alvares",
+        "email": "comite.emergencias.guadalupe@gmail.com"
+    },
+    {
+        "job": "Albergues",
+        "name": "Maria Cespedes Mesen",
+        "email": "mariacespedes1723@gmail.com"
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "Teresa Jimenez Salinas",
+        "email": "terejisa1992@gmail.com"
+    },
+    {
+        "job": "Bodegas",
+        "name": "Wilberth Vergara Fallas",
+        "email": "wilberthfallas79@gmail.com"
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "Xinia Guzman Jimenez",
+        "email": "guzmanjimmezxinia@gmail.com"
+    }],
+    ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
+  },
+  {
+    id: 5,
+    name: "Kilómetro 20",
+    committee: [
+      {
+        "job": "Coordinación",
+        "name": "Yanny Mora Monge",
+        "email": "yannymor@gmail.com"
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "Esteban Rodríguez Lara",
+        "email": "estebanrodriguezlara6@gmail.com"
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "Carlos Luis Sibaja Chavarri",
+        "email": "clssibajachaverri.90@gmail.com"
+    },
+    {
+        "job": "Vocalía",
+        "name": "Margarita Matamoros Alvarado",
+        "email": ""
+    },
+    {
+        "job": "Fiscalía",
+        "name": "José Luis Jiménez Arguedas",
+        "email": ""
+    }
+    ],
+    workTeam: [{
+        "job": "Voluntariado",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Salud",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Seguridad",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Albergues",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "Arnoldo Gonzalez Rodríguez",
+        "email": ""
+    },
+    {
+        "job": "Bodegas",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "",
+        "email": ""
+    }],
+    ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
+  },
+  {
+    id: 6,
+    name: "La Esperanza",
+    committee: [{
+        "job": "Coordinación",
+        "name": "Fiorella Diaz Murillo",
+        "email": "fiorelladiazmurillo@gmail.com"
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "Franchesca Solis Gutierrez",
+        "email": "franchesca261990@gmail.com"
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "Lorlli Alvarez Parra",
+        "email": "lorlli_alvarez_parra@hotmail.com"
+    },
+    {
+        "job": "Vocalía",
+        "name": "Ana Marina Obando Hernandez",
+        "email": "marina.ana1977@gmail.com"
+    },
+    {
+        "job": "Fiscalía",
+        "name": "Emily Sofia Mora Patiño",
+        "email": "emilymora452@gmail.com"
+    }],
+    workTeam: [{
+        "job": "Voluntariado",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "Hilda Beatriz Mora Bonilla",
+        "email": "-"
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "Marielos Venegas Caespedes",
+        "email": ""
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "Hanzel Alpizar Gonzales",
+        "email": ""
+    },
+    {
+        "job": "Salud",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Seguridad",
+        "name": "Miguel Gerardo Badilla Mora",
+        "email": "-"
+    },
+    {
+        "job": "Albergues",
+        "name": "Ana Yancy Alvarez Parra",
+        "email": "-"
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Bodegas",
+        "name": "",
+        "email": ""
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "",
+        "email": ""
+    }],
+    ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
+  },
+  {
+    id: 7,
+    name: "La Gamba",
+    committee: [
+      {
+        "job": "Coordinación",
+        "name": "OSCAR LOPEZ CRUZ",
+        "email": "cce.gamba.bonito.bolsa@gmail.com"
+    },
+    {
+        "job": "Sub-coordinación",
+        "name": "RONALD MOYA DIAZ",
+        "email": "ronaldmoyadiaz@gmail.com"
+    },
+    {
+        "job": "SecretarÍa",
+        "name": "MARIA ELENA CHAVES CERDAD",
+        "email": "mariaelenachc@gmail.com"
+    },
+    {
+        "job": "Vocalía",
+        "name": "ROSA MARIA TENORIO RUIZ",
+        "email": "tenoriorosa479@gmail.com"
+    },
+    {
+        "job": "Fiscalía",
+        "name": "MARCOS VILLEGAS CASTRO",
+        "email": "marcastro0611@gmail.com"
+    }],
+    workTeam: [{
+        "job": "Voluntariado",
+        "name": "ALEJANDRINA CASTRO MOYA",
+        "email": "cce.gamba.bonito.bolsa@gmail.com"
+    },
+    {
+        "job": "Educación y Divulgación",
+        "name": "JOSEPH GABRIEL GUTIERREZ MORERA",
+        "email": "josehpg102@gmail.com"
+    },
+    {
+        "job": "Gestión de Información",
+        "name": "NANCY DURAN PIEDRA",
+        "email": "nancyduran590@gmail.com"
+    },
+    {
+        "job": "Evacuación y Rescate",
+        "name": "JOSE MURILLO ROJAS",
+        "email": "cce.gamba.bonito.bolsa@gmail.com"
+    },
+    {
+        "job": "Salud",
+        "name": "ERIKA MOYA CASTILLO",
+        "email": "erickavmoyac14@gmail.com"
+    },
+    {
+        "job": "Seguridad",
+        "name": "FRANCISCO MURILLO OBANDO",
+        "email": "franciscomurillo191@gmail.com"
+    },
+    {
+        "job": "Albergues",
+        "name": "ISABEL CASTILLO COREA",
+        "email": "castilloisabel62@gmail.com"
+    },
+    {
+        "job": "Albergues",
+        "name": "ALFONSO LOPEZ CASTRO",
+        "email": "cce.gamba.bonito.bolsa@gmail.com"
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "MARIA LUISA SANCHEZ PORRAS-",
+        "email": "mari.sanchez.porras@gmail.com"
+    },
+    {
+        "job": "Telecomunicaciones",
+        "name": "DANYLOPEZ BRENES",
+        "email": "cce.gamba.bonito.bolsa@gmail.com"
+    },
+    {
+        "job": "Evaluación del Riesgo y Análisis de Necesidades.",
+        "name": "JUAN JOSE JARA MATAMOROS",
+        "email": "jjjara04@gmail.com"
+    },
+    {
+        "job": "Bodegas",
+        "name": "KEMBLY QUIROS CASTRO",
+        "email": "mamapemby86@gmail.com"
+    },
+    {
+        "job": "Manejo de Suministros.",
+        "name": "JEIMY VALLEJOS JAEN",
+        "email": "yeimyvallejos@hotmail.com"
+    }],
     ubication: this.sanitizer.bypassSecurityTrustHtml('<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d26928.742697847516!2d-83.06891601747567!3d8.642365959841923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sbambel%20golfito!5e0!3m2!1ses-419!2scr!4v1715012929233!5m2!1ses-419!2scr" style= "height:100%;width:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>')
   }]
   setCurrentPlace(newPlace:number){
