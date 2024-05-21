@@ -7,6 +7,10 @@ table{
   width: 80%;
   margin-bottom: 2rem;
 }
+div{
+  width: 100%;
+  overflow-x: auto;
+}
 thead{
   font-weight: bold;
   color: var(--title-color);

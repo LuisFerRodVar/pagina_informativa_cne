@@ -94,3 +94,8 @@
 .__text a:hover {
     background-color: #fe952d;
 }
+@media (max-width: 1070px){
+  .__body__about{
+    flex-direction: column;
+  }
+}

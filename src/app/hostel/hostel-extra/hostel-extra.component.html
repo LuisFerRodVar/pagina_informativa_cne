@@ -1,24 +1,26 @@
-<table>
-  <thead>
-    <tr>
-      <td>Distrito</td>
-      <td>Comunidad</td>
-      <td>Tipo instalación</td>
-      <td>Capacidad</td>
-      <td>Responsable</td>
-      <td>Contacto</td>
-    </tr>
-  </thead>
-  <tbody>
-    @for (hostel of hostels; track hostel){
-     <tr>
-       <td>{{hostel.district}}</td>
-       <td>{{hostel.community}}</td>
-       <td>{{hostel.type}}</td>
-       <td>{{hostel.capacity}}</td>
-       <td>{{hostel.inCharge}}</td>
-       <td>{{hostel.contact}}</td>
-     </tr>
-    }
-  </tbody>
-</table>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td>Distrito</td>
+        <td>Comunidad</td>
+        <td>Tipo instalación</td>
+        <td>Capacidad</td>
+        <td>Responsable</td>
+        <td>Contacto</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (hostel of hostels; track hostel){
+      <tr>
+        <td>{{hostel.district}}</td>
+        <td>{{hostel.community}}</td>
+        <td>{{hostel.type}}</td>
+        <td>{{hostel.capacity}}</td>
+        <td>{{hostel.inCharge}}</td>
+        <td>{{hostel.contact}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
