@@ -1,4 +1,6 @@
 table{
+  width: 100%;
+  border-collapse: collapse;
   margin: 0 auto;
   text-align: center;
   font-size: 1.8rem;
@@ -15,6 +17,5 @@ thead td{
 }
 td{
   border: 1px solid #C7C7C7;
-  border-collapse: collapse;
   padding: 1rem;
 }

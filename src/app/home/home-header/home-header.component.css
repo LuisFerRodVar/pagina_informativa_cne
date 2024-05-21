@@ -1,17 +1,18 @@
 section {
-    height: 100vh; 
+    height: 100vh;
     background-image: url("../../../assets/img/home/home.webp");
-    background-position: center; 
+    background-position: center;
     background-repeat: no-repeat;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    
+
 }
 
 h1 {
+  font-family: "JetBrainsMono";
     font-size: 4rem;
     font-weight: 700;
-    text-align: center; 
-    color: white; 
+    text-align: center;
+    color: white;
 }

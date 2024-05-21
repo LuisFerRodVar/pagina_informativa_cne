@@ -40,6 +40,7 @@ button{
   opacity: 0;
 }
 table {
+  width: 100%;
   font-size: 1.8rem;
   border-collapse: collapse;
   border: 2px solid #C7C7C7; /* Borde de la tabla */

@@ -22,11 +22,8 @@ section header {
 }
 
 .text {
-  width: 100rem;
   font-size: 1.5rem;
-  text-align: center;
   text-wrap: pretty;
-
   padding: 1rem;
 }
 
@@ -81,11 +78,11 @@ article {
 
   background-color: #fefeff;
   box-shadow: 0px 1px 2px -1px rgba(1,0,0,0.6);
-  
+
   color: #777777;
   border-radius: 20px;
 
-  
+
 
 }
 
