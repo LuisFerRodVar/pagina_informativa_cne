@@ -5,11 +5,12 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuMobileComponent } from './menu-mobile/menu-mobile.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, MenuMobileComponent, FontAwesomeModule],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, MenuMobileComponent, FontAwesomeModule, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

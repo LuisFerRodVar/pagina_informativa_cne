@@ -4,12 +4,9 @@
   }@else{
     <button (click) = "toggleOpen()"><fa-icon [icon]="faBars"></fa-icon></button>
   }
-  @if (open){
-    <app-menu-mobile />
-  }@else{
 
-    <app-menu-mobile class="hidden" />
-  }
+  <app-menu-mobile [ngClass]="{'hidden': !open}" />
+
   <app-navbar />
   <main>
     <router-outlet />
