@@ -1,16 +1,22 @@
 <nav>
   @if (carousel == 0){
-  <button class="disabled" disabled (click)="navigateCarousel(-1)" value="<">{{"<"}}</button>
+  <button class="back disabled" disabled (click)="navigateCarousel(-1)" value="<">{{"<"}}</button>
   } @else{
-      <button (click)="navigateCarousel(-1)" value="<">{{"<"}}</button>
+      <button class="back" (click)="navigateCarousel(-1)" value="<">{{"<"}}</button>
   }
   @for (place of places.slice(carousel, carousel + 4); track place){
+    @if( place.id == places[currentPlace].id){
+
+    <span class="selected" (click)="setCurrentPlace(place.id)">{{place.name}}</span>
+  } @else{
+
     <span (click)="setCurrentPlace(place.id)">{{place.name}}</span>
   }
+  }
   @if (carousel == places.length - 4){
-    <button class="disabled" disabled (click)="navigateCarousel(1)" value="<">{{">"}}</button>
+    <button class="forward disabled" disabled (click)="navigateCarousel(1)" value="<">{{">"}}</button>
   } @else{
-  <button (click)="navigateCarousel(1)" value="<">{{">"}}</button>
+  <button class="forward" (click)="navigateCarousel(1)" value="<">{{">"}}</button>
   }
 </nav>
 <div [innerHTML]=places[currentPlace].ubication></div>

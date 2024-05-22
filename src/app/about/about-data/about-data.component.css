@@ -40,3 +40,10 @@ p{
   background-color: var(--detail-color);
   border-radius: 1rem;
 }
+@media (max-width: 500px){
+  ul{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+  }
+}
