@@ -21,4 +21,10 @@ table{
   border-spacing: 2rem;
   font-size: 2rem;
   margin: 0 auto;
+
 }
+div{
+  width: 100%;
+  overflow-x: auto;
+}
+
