@@ -54,9 +54,6 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
-
-
     font-size: 2rem;
     font-weight: 400;
 
@@ -98,4 +95,10 @@
   .__body__about{
     flex-direction: column;
   }
+}
+@media (max-width: 500px){
+  .__body__about{
+    padding: 0;
+  }
+
 }
