@@ -1,14 +1,24 @@
 <section>
   <div class="general__title">
-    <h1>Noticias</h1>
+    <h2>Noticias</h2>
   </div>
-  <div class="img_news">
-    <img src="../../../assets/img/home/notice.webp" alt="" />
-    <div class="news">
-      <h3>Costa Rica enfrenta segunda ola de pandemia de COVID-19</h3>
-      <p>Destacó que los sectores con mayor afectacion son Agricola...</p>
-      <a href="#">Leer más...</a>
+  <div class="img-carousel">
+    <button class="prev" (click)="prevSlide()">❮</button>
+    <div class="carousel-wrapper">
+      <div class="carousel" [style.transform]="getTransform()">
+        @for(news of newsItems; track news.id ){
+        <div class="carousel-item"  >
+          <div class="news-card">
+            <h3>{{ news.title }}</h3>
+            <img [src]="news.image" [alt]="news.title" />
+            <p>{{ news.description }}</p>
+            <div class="date">{{ news.date }}</div>
+            <button>Leer Más</button>
+          </div>
+        </div>
+        }
+      </div>
     </div>
+    <button class="next" (click)="nextSlide()">❯</button>
   </div>
 </section>
-
