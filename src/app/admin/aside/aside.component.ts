@@ -20,5 +20,9 @@ export class AsideComponent {
   faSchool = faSchool;
   faBook = faBook;
   faGear = faGear;
+  collapsed = false;
 
+  toggleCollapsed(){
+    this.collapsed = !this.collapsed;
+  }
 }

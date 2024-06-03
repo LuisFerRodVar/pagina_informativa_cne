@@ -1,33 +1,47 @@
 <aside>
   <div>
-    <img src="../../../assets/img/Login/Escudo.webp" alt="Escudo de municipalidad">
-    <p>Municipalidad</p>
-    <fa-icon [icon]="faBars"></fa-icon>
+    @if (!collapsed){
+      <img src="../../../assets/img/Login/Escudo.webp" alt="Escudo de municipalidad">
+      <p>Municipalidad</p>
+    }
+    <fa-icon (click) = "toggleCollapsed()" [icon]="faBars"></fa-icon>
   </div>
   <nav>
     <article routerLink='/admin/dashboard' routerLinkActive='active'>
       <fa-icon [icon]="faHome"></fa-icon>
-      <span>Inicio</span>
+      @if (!collapsed){
+        <span>Inicio</span>
+      }
     </article>
     <article routerLink='/admin/usuarios' routerLinkActive='active'>
       <fa-icon [icon]="faNews"></fa-icon>
-      <span>Usuarios</span>
+      @if (!collapsed){
+        <span>Usuarios</span>
+      }
     </article>
     <article routerLink='/admin/albergues' routerLinkActive='active'>
       <fa-icon [icon]="faBuilding"></fa-icon>
-      <span>Albergues</span>
+      @if (!collapsed){
+        <span>Albergues</span>
+      }
     </article>
     <article routerLink='/admin/comites' routerLinkActive='active'>
       <fa-icon [icon]="faSchool"></fa-icon>
-      <span>Comités Comunales</span>
+      @if (!collapsed){
+        <span>Comités Comunales</span>
+      }
     </article>
     <article routerLink='/admin/directorio' routerLinkActive='active'>
       <fa-icon [icon]="faBook"></fa-icon>
-      <span>Directorio</span>
+      @if (!collapsed){
+        <span>Directorio</span>
+      }
     </article>
     <article routerLink='/admin/configuraciones' routerLinkActive='active'>
       <fa-icon [icon]="faGear"></fa-icon>
-      <span>Configuraciones</span>
+      @if (!collapsed){
+        <span>Configuraciones</span>
+      }
     </article>
   </nav>
 </aside>
