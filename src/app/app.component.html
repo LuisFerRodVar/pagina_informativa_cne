@@ -1,15 +1,18 @@
 <div>
-  @if (open){
-    <button (click) = "toggleOpen()"><fa-icon [icon]="faX"></fa-icon></button>
-  }@else{
-    <button (click) = "toggleOpen()"><fa-icon [icon]="faBars"></fa-icon></button>
-  }
-
+  @if(!isAdminRoute()){
+    @if (open){
+      <button (click) = "toggleOpen()"><fa-icon [icon]="faX"></fa-icon></button>
+    }@else{
+      <button (click) = "toggleOpen()"><fa-icon [icon]="faBars"></fa-icon></button>
+    }
   <app-menu-mobile [ngClass]="{'hidden': !open}" />
-
   <app-navbar />
+  }
   <main>
     <router-outlet />
-    <app-footer />
+    @if(!isAdminRoute()){
+      <app-footer />
+    }
   </main>
+
 </div>
