@@ -3,6 +3,16 @@ section{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 3rem;
-  font-size: 2.5rem;
+  padding: 2rem 3rem;
+  font-size: 2rem;
+  background-color: var(--detail-color);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+h1{
+  color: var(--main-color);
+}
+div{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
