@@ -1,8 +1,13 @@
 <main>
   @if(!isLogin()){
-    <app-panel />
-    <app-aside />
+    <div>
+      <app-aside />
+    </div>
   }
-
-  <router-outlet />
+  <section>
+    @if(!isLogin()){
+      <app-panel />
+    }
+    <router-outlet />
+  </section>
 </main>
