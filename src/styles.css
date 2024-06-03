@@ -6,6 +6,7 @@
   --main-color: #23D0EC;
   --detail-color: #EFEFEF;
   --title-color: #FF8B18;
+  --gray-color: #00000025;
 }
 * {
   margin: 0;
