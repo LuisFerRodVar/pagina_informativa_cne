@@ -1,18 +1,61 @@
 section {
-    height: 100vh;
-    background-image: url("../../../assets/img/home/home.webp");
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  background-image: url("../../../assets/img/home/home.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
+h1, h2, h3 {
+  font-family: "JetBrainsMono";
+  margin: 0;
+  padding: 10px;
 }
 
 h1 {
-  font-family: "JetBrainsMono";
-    font-size: 4rem;
-    font-weight: 700;
-    text-align: center;
-    color: white;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
+
+h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  text-transform: none;
+}
+
+@media (max-width: 1200px) {
+  h1 {
+      font-size: 3rem;
+  }
+  h2 {
+      font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2.5rem;
+  }
+  h2 {
+      font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+      font-size: 1.6rem;
+  }
+  h2 {
+      font-size: 1.4rem;
+  }
+}
+
