@@ -1,0 +1,56 @@
+<div class="form-container">
+  <h2>Formulario Registro Noticias</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Título</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        ngModel
+        required
+        placeholder="Título de la noticia"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="link">Link</label>
+      <input
+        type="text"
+        id="link"
+        name="link"
+        ngModel
+        required
+        placeholder="Link de la noticia"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="image">Imagen</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        (change)="onFileChange($event)"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="date">Fecha</label>
+      <input type="date" id="date" name="date" ngModel required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <textarea
+        id="description"
+        name="description"
+        ngModel
+        required
+        placeholder="Descripción"
+      ></textarea>
+    </div>
+
+    <button type="submit">Registrar</button>
+  </form>
+</div>

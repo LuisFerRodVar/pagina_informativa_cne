@@ -1,1 +1,42 @@
-<p>news works!</p>
+<section>
+  <div class="table-container">
+    <h2>Usuarios</h2>
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" placeholder="Usuario" formControlName="searchQuery" />
+        <button (click)="search()">Buscar</button>
+      </div>
+      
+      <button class="add-button" (click)="addUser()">+ Agregar</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Titulo</th>
+          <th>Fecha</th>
+          <th>Descripcion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (new of news; track $index) {
+        <tr>
+          <td>{{ new.id }}</td>
+          <td>{{ new.title }}</td>
+          <td>{{ new.date }}</td>
+          <td>{{ new.description }}</td>
+          <td class="actions-button">
+            <button (click)="editUser(new)">
+              <img src="../../../assets/img/edit.png" alt="Editar" />
+            </button>
+            <button (click)="deleteUser(new)">
+              <img src="../../../assets/img/delete.png" alt="Eliminar" />
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
