@@ -8,12 +8,14 @@ import { HostelsComponent } from './hostels/hostels.component';
 import { CommitteesComponent } from './committees/committees.component';
 import { DirectoriesComponent } from './directories/directories.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'usuarios', component: UsersComponent},
+  {path: 'noticias', component: NewsComponent},
   {path: 'albergues', component: HostelsComponent},
   {path: 'comites', component: CommitteesComponent},
   {path: 'directorio', component: DirectoriesComponent},

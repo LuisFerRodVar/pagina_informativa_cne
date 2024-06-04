@@ -12,8 +12,12 @@
       <span [ngClass]="{'hidden': collapsed}">Inicio</span>
     </article>
     <article routerLink='/admin/usuarios' routerLinkActive='active'>
-      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faNews"></fa-icon>
+      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faUser"></fa-icon>
       <span [ngClass]="{'hidden': collapsed}">Usuarios</span>
+    </article>
+    <article routerLink='/admin/noticias' routerLinkActive='active'>
+      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faNews"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Noticias</span>
     </article>
     <article routerLink='/admin/albergues' routerLinkActive='active'>
       <fa-icon [ngClass]="{'center': collapsed}" [icon]="faBuilding"></fa-icon>
