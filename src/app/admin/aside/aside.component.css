@@ -38,6 +38,7 @@ article{
   border-radius: 1rem;
   padding: 0.4rem;
   color: var(--background-color);
+  cursor: pointer;
 }
 nav{
   display: flex;
