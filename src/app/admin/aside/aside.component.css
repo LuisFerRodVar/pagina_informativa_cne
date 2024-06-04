@@ -7,7 +7,10 @@ aside{
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
-  font-size: 1.6rem;
+  font-size: 2rem;
+}
+.hidden{
+  display: none;
 }
 div{
   display: flex;
@@ -18,7 +21,7 @@ div{
 div fa-icon{
   padding: 2rem;
   color: var(--gray-color);
-  font-size: 2rem;
+  font-size: 3rem;
 }
 img{
   width: 4.5rem;
@@ -49,4 +52,7 @@ nav fa-icon{
   flex-basis: 10%;
   display: block;
   text-align: center;
+}
+.center{
+  margin: 0 auto;
 }
