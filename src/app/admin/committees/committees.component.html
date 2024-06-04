@@ -1,1 +1,57 @@
-<p>committees works!</p>
+<section>
+    <div class="table-container">
+        <h2>Comité Comunales (CCE)</h2>
+      <div class="search-bar">
+        <div class="search">
+          <input type="text" placeholder="Buscar" formControl="searchQuery" />
+          <button (click)="search()">Buscar</button>
+        </div>
+        <button class="add-button" (click)="addCommittee()">+ Agregar</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Cantón</th>
+            <th>Distrito</th>
+            <th>Comunidad</th>
+            <th>Responsable</th>
+            <th>Contacto</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (committee  of filteredCommittees; track $index) {
+          <tr>
+            <td>{{ committee.id }}</td>
+            <td>{{ committee.nombre }}</td>
+            <td>{{ committee.canton }}</td>
+            <td>{{ committee.distrito }}</td>
+            <td>{{ committee.comunidad }}</td>
+            <td>{{ committee.responsable }}</td>
+            <td>{{ committee.contacto }}</td>
+            <td class="actions-button">
+              <button (click)="editCommittee(committee)">
+                <img src="../../../assets/img/edit.png" alt="Editar" />
+              </button>
+              <button (click)="deleteCommittee(committee)">
+                <img src="../../../assets/img/delete.png" alt="Eliminar" />
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      <!--  
+      @if ("showRegistrationForm") {
+      <div class="modal">
+        <app-committee-registration (committeeRegistered)="onCommitteeRegistered($event)"></app-committee-registration>
+        <button class="close-button" (click)="closeModal()">Cerrar</button>
+      </div>
+      }
+      -->
+      
+    </div>
+  </section>
+  

@@ -1,0 +1,49 @@
+<div class="form-container">
+    <h2>Formulario Registro Comité</h2>
+    <form formGroup="committeeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre comité">
+      </div>
+  
+      <div class="form-group">
+        <label for="canton">Cantón</label>
+        <select id="canton" formControlName="canton">
+          <option value="" disabled selected>--Seleccionar--</option>
+          <option value="Canton1">Cantón 1</option>
+          <option value="Canton2">Cantón 2</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="distrito">Distrito</label>
+        <select id="distrito" formControlName="distrito">
+          <option value="" disabled selected>--Seleccionar--</option>
+          <option value="Distrito1">Distrito 1</option>
+          <option value="Distrito2">Distrito 2</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="comunidad">Comunidad</label>
+        <select id="comunidad" formControlName="comunidad">
+          <option value="" disabled selected>--Seleccionar--</option>
+          <option value="Comunidad1">Comunidad 1</option>
+          <option value="Comunidad2">Comunidad 2</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="responsable">Responsable</label>
+        <input type="text" id="responsable" formControlName="responsable" placeholder="Encargado">
+      </div>
+  
+      <div class="form-group">
+        <label for="contacto">Contacto</label>
+        <input type="text" id="contacto" formControlName="contacto" placeholder="Teléfono">
+      </div>
+  
+      <button type="submit" [disabled]="!committeeForm.valid">Registrar</button>
+    </form>
+  </div>
+  
