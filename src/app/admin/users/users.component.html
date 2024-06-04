@@ -1,1 +1,47 @@
-<p>users works!</p>
+<section>
+  <div class="table-container">
+    <h2>Usuarios</h2>
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" placeholder="Usuario" formControlName="searchQuery" />
+        <button (click)="search()">Buscar</button>
+      </div>
+      
+      <button class="add-button" (click)="addUser()">+ Agregar</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track $index) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td class="actions-button">
+            <button (click)="editUser(user)">
+              <img src="../../../assets/img/edit.png" alt="Editar" />
+            </button>
+            <button (click)="deleteUser(user)">
+              <img src="../../../assets/img/delete.png" alt="Eliminar" />
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <div *ngIf="showRegistrationForm" class="modal">
+      <app-user-registration (userRegistered)="onUserRegistered($event)"></app-user-registration>
+    </div>
+
+  </div>
+</section>
