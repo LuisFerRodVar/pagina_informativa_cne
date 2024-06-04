@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -7,7 +8,7 @@ import { faBars, faBook, faGear, faHome, faNewspaper, faSchool, faUser } from '@
 @Component({
   selector: 'app-aside',
   standalone: true,
-  imports: [FontAwesomeModule, RouterLink, RouterLinkActive],
+  imports: [FontAwesomeModule, RouterLink, RouterLinkActive, NgClass],
   templateUrl: './aside.component.html',
   styleUrl: './aside.component.css'
 })

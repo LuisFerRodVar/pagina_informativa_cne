@@ -8,40 +8,28 @@
   </div>
   <nav>
     <article routerLink='/admin/dashboard' routerLinkActive='active'>
-      <fa-icon [icon]="faHome"></fa-icon>
-      @if (!collapsed){
-        <span>Inicio</span>
-      }
+      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faHome"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Inicio</span>
     </article>
     <article routerLink='/admin/usuarios' routerLinkActive='active'>
-      <fa-icon [icon]="faNews"></fa-icon>
-      @if (!collapsed){
-        <span>Usuarios</span>
-      }
+      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faNews"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Usuarios</span>
     </article>
     <article routerLink='/admin/albergues' routerLinkActive='active'>
-      <fa-icon [icon]="faBuilding"></fa-icon>
-      @if (!collapsed){
-        <span>Albergues</span>
-      }
+      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faBuilding"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Albergues</span>
     </article>
     <article routerLink='/admin/comites' routerLinkActive='active'>
-      <fa-icon [icon]="faSchool"></fa-icon>
-      @if (!collapsed){
-        <span>Comités Comunales</span>
-      }
+      <fa-icon  [ngClass]="{'center': collapsed}" [icon]="faSchool"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Comités Comunales</span>
     </article>
     <article routerLink='/admin/directorio' routerLinkActive='active'>
-      <fa-icon [icon]="faBook"></fa-icon>
-      @if (!collapsed){
-        <span>Directorio</span>
-      }
+      <fa-icon  [ngClass]="{'center': collapsed}" [icon]="faBook"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Directorio</span>
     </article>
     <article routerLink='/admin/configuraciones' routerLinkActive='active'>
-      <fa-icon [icon]="faGear"></fa-icon>
-      @if (!collapsed){
-        <span>Configuraciones</span>
-      }
+      <fa-icon  [ngClass]="{'center': collapsed}" [icon]="faGear"></fa-icon>
+      <span [ngClass]="{'hidden': collapsed}">Configuraciones</span>
     </article>
   </nav>
 </aside>
