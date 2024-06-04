@@ -1,1 +1,60 @@
-<p>hostels works!</p>
+<section>
+  <div class="table-container">
+    <h2>Albergues</h2>
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" placeholder="Buscar" formControl="searchQuery" />
+        <button (click)="search()">Buscar</button>
+      </div>
+      <button class="add-button" (click)="addHostel()">+ Agregar</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Cantón</th>
+            <th>Distrito</th>
+            <th>Comunidad</th>
+            <th>Responsable</th>
+            <th>Capacidad</th>
+            <th>Contacto</th>
+            <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (hostel of filteredHostels; track $index) {
+        <tr>
+            <td>{{ hostel.id }}</td>
+            <td>{{ hostel.nombre }}</td>
+            <td>{{ hostel.canton }}</td>
+            <td>{{ hostel.distrito }}</td>
+            <td>{{ hostel.comunidad }}</td>
+            <td>{{ hostel.responsable }}</td>
+            <td>{{ hostel.capacidad }}</td>
+            <td>{{ hostel.contacto }}</td>
+          <td class="actions-button">
+            <button (click)="editHostel(hostel)">
+              <img src="../../../assets/img/edit.png" alt="Editar" />
+            </button>
+            <button (click)="deleteHostel(hostel)">
+              <img src="../../../assets/img/delete.png" alt="Eliminar" />
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <!--  
+    @if ("showRegistrationForm") {
+    <div class="modal">
+      <app-hostels-registration
+        (hostelRegistered)="onHostelRegistered($event)"
+      ></app-hostels-registration>
+      <button class="close-button" (click)="closeModal()">Cerrar</button>
+    </div>
+    }
+    -->
+    
+  </div>
+</section>
