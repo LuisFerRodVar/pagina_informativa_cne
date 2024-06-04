@@ -1,0 +1,49 @@
+<div class="form-container">
+  <h2>Formulario Registro Directorio</h2>
+  <form formGroup="directoryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        formControlName="nombre"
+        placeholder="Nombre"
+      />
+    </div>
+    <div class="form-group">
+      <label for="cargo">Cargo</label>
+      <input
+        type="text"
+        id="cargo"
+        formControlName="cargo"
+        placeholder="Cargo"
+      />
+    </div>
+    <div class="form-group">
+      <label for="institucion">Institución</label>
+      <input
+        type="text"
+        id="institucion"
+        formControlName="institucion"
+        placeholder="Institución"
+      />
+    </div>
+    <div class="form-group">
+      <label for="mesa">Mesa</label>
+      <input type="text" id="mesa" formControlName="mesa" placeholder="Mesa" />
+    </div>
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input
+        type="email"
+        id="correo"
+        formControlName="correo"
+        placeholder="Correo"
+      />
+    </div>
+    <button type="submit" [disabled]="!directoryForm.valid">Registrar</button>
+    <button type="button" class="close-button" (click)="closeModal()">
+      Cerrar
+    </button>
+  </form>
+</div>

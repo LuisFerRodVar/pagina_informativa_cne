@@ -1,1 +1,46 @@
-<p>directories works!</p>
+<section>
+  <div class="table-container">
+    <h2>Directorios</h2>
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" placeholder="Buscar" formControlName="searchQuery" />
+        <button (click)="search()">Buscar</button>
+      </div>
+
+      <button class="add-button" (click)="addDirectory()">+ Agregar</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>Institución</th>
+          <th>Mesa</th>
+          <th>Correo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (directory of filteredDirectories; track $index) {
+        <tr>
+          <td>{{ directory.id }}</td>
+          <td>{{ directory.nombre }}</td>
+          <td>{{ directory.cargo }}</td>
+          <td>{{ directory.institucion }}</td>
+          <td>{{ directory.mesa }}</td>
+          <td>{{ directory.correo }}</td>
+          <td class="actions-button">
+            <button (click)="editDirectory(directory)">
+              <img src="../../../assets/img/edit.png" alt="Editar" />
+            </button>
+            <button (click)="deleteDirectory(directory)">
+              <img src="../../../assets/img/delete.png" alt="Eliminar" />
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
