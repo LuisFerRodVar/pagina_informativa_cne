@@ -1,1 +1,39 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <h2>Inicio</h2>
+  <div class="counters">
+    <div class="counter-item">
+      <div class="counter-value">{{ usersCount }}</div>
+      <div class="counter-label">Usuarios</div>
+    </div>
+    <div class="counter-item">
+      <div class="counter-value">{{ hostelsCount }}</div>
+      <div class="counter-label">Albergues</div>
+    </div>
+    <div class="counter-item">
+      <div class="counter-value">{{ committeesCount }}</div>
+      <div class="counter-label">Comités</div>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Contacto</th>
+        <th>Telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of dashboardItems; track $index) {
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.correo }}</td>
+        <td>{{ item.contacto }}</td>
+        <td>{{ item.telefono }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
