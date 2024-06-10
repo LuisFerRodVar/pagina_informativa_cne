@@ -1,14 +1,17 @@
-h1{
+h1 {
   text-align: center;
   color: var(--main-color);
   font-size: 2.4rem;
+  margin-top: 2rem; /* Espacio adicional para separar secciones */
 }
-span{
+
+span {
   position: relative;
   display: block;
   padding: 1rem;
 }
-span::before{
+
+span::before {
   content: "";
   height: 1px;
   width: 90%;
@@ -17,14 +20,66 @@ span::before{
   position: absolute;
   background-color: black;
 }
-table{
-  border-spacing: 2rem;
-  font-size: 2rem;
-  margin: 0 auto;
 
+.directory-container {
+  padding: 1rem 5%; /* Misma separación lateral que span */
+  overflow-x: hidden; /* Asegura que no haya scroll horizontal */
 }
-div{
-  width: 100%;
+
+.table-container {
   overflow-x: auto;
+  width: 100%;
 }
 
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+  margin: 0 auto 2rem; /* Margen inferior para separar tablas */
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 1rem; /* Padding consistente */
+  border-bottom: 1px solid #ddd; /* Línea de separación */
+}
+
+th {
+  background-color: var(--main-color);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Color de fondo alternado */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; /* Prevenir scroll horizontal en el body */
+  }
+
+  .table-container {
+    overflow-x: auto; /* Habilitar scroll horizontal en modo móvil */
+    -webkit-overflow-scrolling: touch; /* Suavizar scroll en dispositivos táctiles */
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap; /* Prevenir que el contenido de las celdas se ajuste automáticamente */
+  }
+
+  th, td {
+    white-space: nowrap; /* Prevenir ajuste de texto */
+  }
+
+  table {
+    font-size: 1.4rem;
+  }
+
+  th, td {
+    padding: 0.5rem;
+  }
+}
