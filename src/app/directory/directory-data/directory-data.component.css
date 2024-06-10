@@ -33,7 +33,7 @@ span::before {
 
 table {
   width: 100%;
-  max-width: 100%;
+  max-width: 110rem;
   border-collapse: collapse;
   font-size: 1.6rem;
   margin: 0 auto 2rem; /* Margen inferior para separar tablas */
