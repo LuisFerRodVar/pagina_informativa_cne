@@ -1,49 +1,83 @@
-<span></span>
-<h1>Mesa de primera respuesta</h1>
-<div>
-  <table>
-    <tbody>
-      @for (person of data; track person){
-      <tr>
-        <td>{{person.name}}</td>
-        <td>{{person.job}}</td>
-        <td>{{person.institution}}</td>
-        <td>{{person.mail}}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
-</div>
-<span></span>
-<h1>Mesa de Salud, Agua y Saneamiento</h1>
-<div>
-  <table>
-    <tbody>
-      @for (person of data; track person){
-      <tr>
-        <td>{{person.name}}</td>
-        <td>{{person.job}}</td>
-        <td>{{person.institution}}</td>
-        <td>{{person.mail}}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
-</div>
+<div class="directory-container">
+  <h1>Comité ejecutivo</h1>
+  <div>
+    <table>
+      <tbody>
+        @for (person of Comite; track person){
+        <tr>
+          <td>{{ person.name }}</td>
+          <td>{{ person.job }}</td>
+          <td>{{ person.institution }}</td>
+          <td>{{ person.mail }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <span></span>
+  <h1>Mesa de primera respuesta</h1>
+  <div>
+    <table>
+      <tbody>
+        @for (person of MesaPrimeraRespuesta; track person){
+        <tr>
+          <td>{{ person.name }}</td>
+          <td>{{ person.job }}</td>
+          <td>{{ person.institution }}</td>
+          <td>{{ person.mail }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <span></span>
+  <h1>Mesa de Salud, Agua y Saneamiento</h1>
+  <div>
+    <table>
+      <tbody>
+        @for (person of MesaSaludAguaSanamiento; track person){
+        <tr>
+          <td>{{ person.name }}</td>
+          <td>{{ person.job }}</td>
+          <td>{{ person.institution }}</td>
+          <td>{{ person.mail }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 
-<span></span>
-<h1>Mesa de Infraestructura y Servicios</h1>
-<div>
-  <table>
-    <tbody>
-      @for (person of data; track person){
-      <tr>
-        <td>{{person.name}}</td>
-        <td>{{person.job}}</td>
-        <td>{{person.institution}}</td>
-        <td>{{person.mail}}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+  <span></span>
+  <h1>Mesa de Infraestructura y Servicios</h1>
+  <div>
+    <table>
+      <tbody>
+        @for (person of MesaInfraServicios; track person){
+        <tr>
+          <td>{{ person.name }}</td>
+          <td>{{ person.job }}</td>
+          <td>{{ person.institution }}</td>
+          <td>{{ person.mail }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <span></span>
+  <h1>Mesa Social y Protección Humanitaria</h1>
+  <div>
+    <table>
+      <tbody>
+        @for (person of MesaSocialProHumanitaria; track person){
+        <tr>
+          <td>{{ person.name }}</td>
+          <td>{{ person.job }}</td>
+          <td>{{ person.institution }}</td>
+          <td>{{ person.mail }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
