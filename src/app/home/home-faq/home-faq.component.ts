@@ -32,28 +32,33 @@ export class HomeFaqComponent {
   faqs: FAQ[] = [
     {
       id: 1,
-      question: '¿Qué es este sitio web?',
+      question: '¿Qué es la CNE y cuál es su misión?',
       answer:
-        'Este sitio web es una plataforma para compartir conocimientos y obtener respuestas a preguntas comunes.',
+        'La Comisión Nacional de Prevención de Riesgos y Atención de Emergencias (CNE) es una entidad dedicada a la gestión de riesgos y la atención de emergencias en Costa Rica. Su misión es proteger a la población y minimizar los impactos de los desastres naturales y antropogénicos.',
     },
     {
       id: 2,
-      question: '¿Cómo puedo crear una cuenta?',
+      question: '¿Qué áreas abarca la CME de Golfito?',
       answer:
-        "Para crear una cuenta, haz clic en el botón 'Registrarse' en la parte superior derecha y completa el formulario de registro.",
+        'La CME de Golfito abarca el cantón de Golfito y sus alrededores, incluyendo las comunidades y localidades cercanas.',
     },
     {
       id: 3,
-      question: '¿Es gratis usar el sitio web?',
+      question: '¿Qué debo hacer durante una inundación?',
       answer:
-        'Sí, el uso básico del sitio web es gratuito. Sin embargo, ofrecemos funciones premium que requieren una suscripción.',
+        'Evite áreas bajas y diríjase a terrenos más altos. No cruce ríos o calles inundadas. Siga las instrucciones de las autoridades locales y manténgase informado a través de los medios oficiales.',
     },
     {
       id: 4,
-      question: '¿Cómo puedo restablecer mi contraseña?',
+      question: '¿Dónde se encuentran los albergues en caso de emergencia?',
       answer:
-        "Para restablecer tu contraseña, haz clic en '¿Olvidaste tu contraseña?' en la página de inicio de sesión y sigue las instrucciones.",
+        'Los albergues están ubicados en varias localidades y se activarán en caso de una emergencia. Consulte el mapa en nuestra página para encontrar el más cercano a su ubicación.',
+    },
+    {
+      id: 5,
+      question: '¿Cómo puedo contactar a la CNE de Golfito?',
+      answer:
+        'Puede contactar a la CNE de Golfito a través del teléfono [Número de Teléfono] o por correo electrónico a [Correo Electrónico].',
     },
   ];
 }
-

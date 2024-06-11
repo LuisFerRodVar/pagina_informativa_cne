@@ -51,16 +51,15 @@ section {
 }
 
 .news-card {
-  min-height: 45rem;
+  height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
   background: #fff;
   border-radius: 8px;
   padding: 1rem;
-  padding-bottom: 1rem;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
 }
 
@@ -71,23 +70,18 @@ section {
 }
 
 .news-card img {
-  width: 90%;
+  width: 100%;
+  max-width: 300px; /* Limita el ancho máximo de la imagen */
   height: auto;
   border-radius: 4px;
   margin: 0.5rem 0;
-}
-
-.news-card p {
-  margin-top: 1rem;
-  font-size: 2rem;
-  color: #6e6e6e;
+  object-fit: cover; /* Asegura que la imagen se recorte adecuadamente */
 }
 
 .news-card .date {
   font-size: 1.5rem;
   color: #7f7f7f;
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .news-card button {
@@ -124,7 +118,9 @@ section {
     min-width: 100%; /* Ajustado para mostrar 1 tarjeta */
   }
 
-  .news-card{padding-bottom: 3rem}
+  .news-card {
+    padding-bottom: 3rem;
+  }
 
   .general__title { 
     font-size: 2.5rem; 
@@ -149,4 +145,18 @@ button.prev {
 
 button.next {
   right: -1rem;
+}
+
+.news-card a.read-more-button {
+  background-color: #00bfff;
+  border: none;
+  color: white;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
 }
