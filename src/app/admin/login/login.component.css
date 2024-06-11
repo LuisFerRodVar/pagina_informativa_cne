@@ -1,18 +1,20 @@
-.registro-container {
+
+
+
+
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 100vh;
   width: 100vw;
   background-color: #f0f0f0;
   padding: 1rem;
   box-sizing: border-box;
-  /*Borrar para dejar como el dise;o*/
   background-image: linear-gradient(25deg, #00b4bd, #74c6cc, #afd8db, #e3eaea);
 }
 
-.registro-form {
+.login-form {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,12 +26,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   box-sizing: border-box;
-  /*
-    Borrar para dejar como el dise;o
-    
-    y dejar background-color: rgba(90, 221, 240, 0.75);
-    */
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -51,14 +47,16 @@
 
 h2 {
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .form {
+  width: 25rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .form-group {
@@ -70,15 +68,28 @@ h2 {
   margin-bottom: 1rem;
 }
 
-label {
+.form-remenber{
+    width: 100%;
+    display: flex;
+    align-items: start;
+
+}
+
+.form-remenber label {
+    padding-bottom: 0.5rem;
+    color: #3b8c9b;
+}
+
+.form-group label {
   display: block;
   color: #3b8c9b;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
 
-input {
+input[type="email"],
+input[type="password"] {
   width: 100%;
   padding: 0.5rem;
   border-radius: 10px;
@@ -90,6 +101,10 @@ input {
   box-sizing: border-box;
 }
 
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
 button {
   width: 100%;
   max-width: 200px;
@@ -98,24 +113,33 @@ button {
   border: none;
   border-radius: 10px;
   color: white;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   cursor: pointer;
   margin-top: 1rem;
 }
 
+.forgot-password {
+  margin-top: 1rem;
+  color: #ff8a19;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
 /* Media Queries para pantallas más pequeñas */
 @media (max-width: 900px) {
-  .registro-container {
-  }
   .form {
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding-bottom: 4rem;
   }
-  .registro-form {
+
+  .login-form {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
@@ -133,7 +157,8 @@ button {
     font-size: 1.2rem;
   }
 
-  input {
+  input[type="email"],
+  input[type="password"] {
     width: 100%;
     padding: 0.5rem;
   }
@@ -141,5 +166,9 @@ button {
   button {
     width: 100%;
     font-size: 1rem;
+  }
+
+  .forgot-password {
+    font-size: 0.9rem;
   }
 }
