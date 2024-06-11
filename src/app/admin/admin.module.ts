@@ -4,10 +4,12 @@ import { ReactiveFormsModule  } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users/users.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewsComponent } from './news/news.component';
+
 @NgModule({
   declarations: [
-    UsersComponent
+    UsersComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,

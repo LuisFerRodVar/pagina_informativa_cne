@@ -75,9 +75,11 @@ table {
 table th,
 table td {
   padding: 10px;
-  text-align: left;
+  justify-content: center;
   border-bottom: 1px solid #ddd;
 }
+
+
 
 table th {
   background-color: #00bfff;
@@ -90,12 +92,14 @@ table td button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .actions-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
+
 table td button img {
   width: 16px;
   height: 16px;
@@ -126,4 +130,54 @@ table td button:hover {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+}
+
+.modal h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-buttons button:first-child {
+  background-color: #00cc66;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #ccc;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
