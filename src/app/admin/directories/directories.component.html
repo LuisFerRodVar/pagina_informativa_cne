@@ -3,7 +3,7 @@
     <h2>Directorios</h2>
     <div class="search-bar">
       <div class="search">
-        <input type="text" placeholder="Buscar" formControlName="searchQuery" />
+        <input type="text" placeholder="Buscar" [formControl]="searchQuery" />
         <button (click)="search()">Buscar</button>
       </div>
 
@@ -22,8 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (directory of filteredDirectories; track $index) {
-        <tr>
+        <tr *ngFor="let directory of filteredDirectories; let i = index;">
           <td>{{ directory.id }}</td>
           <td>{{ directory.nombre }}</td>
           <td>{{ directory.cargo }}</td>
@@ -34,13 +33,104 @@
             <button (click)="editDirectory(directory)">
               <img src="../../../assets/img/edit.png" alt="Editar" />
             </button>
-            <button (click)="deleteDirectory(directory)">
+            <button (click)="openDeleteModal(directory)">
               <img src="../../../assets/img/delete.png" alt="Eliminar" />
             </button>
           </td>
         </tr>
-        }
       </tbody>
     </table>
+
+    <!-- Modal para Agregar/Editar Directorio -->
+    <div *ngIf="isModalOpen" class="modal">
+      <h3>{{ isEditing ? 'Editar Directorio' : 'Agregar Nuevo Directorio' }}</h3>
+      <form [formGroup]="directoryForm" (ngSubmit)="saveDirectory()">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            formControlName="nombre"
+            required
+            placeholder="Nombre del director"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cargo">Cargo</label>
+          <input
+            type="text"
+            id="cargo"
+            formControlName="cargo"
+            required
+            placeholder="Cargo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="institucion">Institución</label>
+          <input
+            type="text"
+            id="institucion"
+            formControlName="institucion"
+            required
+            placeholder="Institución"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="mesa">Mesa</label>
+          <input
+            type="text"
+            id="mesa"
+            formControlName="mesa"
+            required
+            placeholder="Mesa"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input
+            type="email"
+            id="correo"
+            formControlName="correo"
+            required
+            placeholder="Correo"
+          />
+          <div
+            *ngIf="
+              directoryForm.get('correo')!.invalid &&
+              (directoryForm.get('correo')!.dirty || directoryForm.get('correo')!.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="directoryForm.get('correo')!.errors?.['required']">
+              El correo es requerido.
+            </div>
+            <div *ngIf="directoryForm.get('correo')!.errors?.['email']">
+              Formato de correo inválido.
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="submit" [disabled]="directoryForm.invalid">
+            {{ isEditing ? 'Actualizar' : 'Registrar' }}
+          </button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal de Confirmación de Eliminación -->
+    <div *ngIf="isDeleteModalOpen" class="modal">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que deseas eliminar el directorio {{ directoryToDelete?.nombre }}?</p>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()">Eliminar</button>
+        <button (click)="closeDeleteModal()">Cancelar</button>
+      </div>
+    </div>
   </div>
 </section>
