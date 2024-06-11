@@ -2,41 +2,43 @@
   @if (option == 1){
   <li class="active">Misión</li>
   }@else{
-  <li (click) = "toggleOption(1)">Misión</li>
-  }
-  @if (option == 2){
+  <li (click)="toggleOption(1)">Misión</li>
+  } @if (option == 2){
   <li class="active">Visión</li>
   }@else{
-  <li (click) = "toggleOption(2)">Visión</li>
-  }
-  @if (option == 3){
+  <li (click)="toggleOption(2)">Visión</li>
+  } @if (option == 3){
   <li class="active">Objetivos</li>
   }@else{
-  <li (click) = "toggleOption(3)">Objetivos</li>
-  }
-  @if (option == 4){
+  <li (click)="toggleOption(3)">Objetivos</li>
+  } @if (option == 4){
   <li class="active">Metas</li>
   }@else{
-  <li (click) = "toggleOption(4)">Metas</li>
+  <li (click)="toggleOption(4)">Metas</li>
   }
 </ul>
 <p>
-  @if (option == 1){
-  Misión bibendum neque id ipsum porttitor bibendum. Mauris pharetra ullamcorper lorem ac cursus. Praesent nec quam eu
-  velit dictum pretium. Integer auctor accumsan enim, sit amet pulvinar augue vestibulum sagittis. Curabitur commodo
-  molestie justo quis dictum. Cras a efficitur nibh.
-  }@else if (option == 2){
-  Visión bibendum neque id ipsum porttitor bibendum. Mauris pharetra ullamcorper lorem ac cursus. Praesent nec quam eu
-  velit dictum pretium. Integer auctor accumsan enim, sit amet pulvinar augue vestibulum sagittis. Curabitur commodo
-  molestie justo quis dictum. Cras a efficitur nibh.
-  }@else if (option == 3){
-  Objetivos bibendum neque id ipsum porttitor bibendum. Mauris pharetra ullamcorper lorem ac cursus. Praesent nec quam eu
-  velit dictum pretium. Integer auctor accumsan enim, sit amet pulvinar augue vestibulum sagittis. Curabitur commodo
-  molestie justo quis dictum. Cras a efficitur nibh.
-  }@else{
-  Metas bibendum neque id ipsum porttitor bibendum. Mauris pharetra ullamcorper lorem ac cursus. Praesent nec quam eu
-  velit dictum pretium. Integer auctor accumsan enim, sit amet pulvinar augue vestibulum sagittis. Curabitur commodo
-  molestie justo quis dictum. Cras a efficitur nibh.
-  }
-
+  @if (option == 1){ Nuestra misión en el cantón de Golfito es liderar y
+  coordinar la gestión integral del riesgo, promoviendo una cultura de
+  prevención y resiliencia en la comunidad, y asegurando una respuesta efectiva
+  y oportuna ante emergencias y desastres. } @else if (option == 2){ Ser una
+  institución de referencia en la gestión del riesgo y la atención de
+  emergencias en Golfito, reconocida por su capacidad de coordinar y ejecutar
+  acciones que protejan a la población y el medio ambiente, contribuyendo al
+  desarrollo sostenible de la región.}@else if (option == 3){En el cantón de
+  Golfito, la CNE se enfoca en fortalecer la capacidad de respuesta ante
+  emergencias mediante la capacitación y coordinación de los comités locales,
+  promoviendo una cultura de prevención a través de campañas educativas y
+  sensibilización. Además, elabora y actualiza planes de contingencia
+  específicos, asegura la disponibilidad y acceso rápido a recursos mediante la
+  cooperación entre instituciones locales, y apoya la investigación en gestión
+  de riesgos para mejorar continuamente las estrategias y acciones implementadas
+  en la región. }@else{ Las metas de la CNE en Golfito incluyen reducir
+  significativamente los riesgos asociados a desastres naturales y otros eventos
+  adversos en las comunidades más vulnerables, garantizar la capacitación
+  continua de los miembros de los comités de emergencia y actores involucrados,
+  lograr una respuesta efectiva y oportuna en todas las emergencias reportadas,
+  mantener una coordinación óptima con las instituciones y organizaciones
+  locales, y establecer un sistema de evaluación y mejora continua para asegurar
+  la efectividad y eficiencia de las operaciones en la región. }
 </p>
