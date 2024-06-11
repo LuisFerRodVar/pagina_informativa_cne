@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 interface User {
   id: number;
@@ -7,12 +7,11 @@ interface User {
   email: string;
   role: string;
 }
+
 @Component({
   selector: 'app-users',
-  standalone: true,
-  imports: [],
   templateUrl: './users.component.html',
-  styleUrl: './users.component.css',
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
   searchQuery = new FormControl('');
@@ -22,43 +21,87 @@ export class UsersComponent {
     { id: 3, name: 'Pedro', email: 'pedro@correo.com', role: 'admin' },
   ];
   filteredUsers: User[] = [...this.users];
+  isModalOpen = false;
+  isDeleteModalOpen = false;
+  isEditing = false;
+  currentUserId: number | null = null;
+  userToDelete: User | null = null;
+
+  newUserName = new FormControl('', Validators.required);
+  newUserEmail = new FormControl('', [Validators.required, Validators.email]);
+  newUserRole = new FormControl('', Validators.required);
 
   search() {
-    /** 
-     * this.filteredUsers = this.users.filter(
+    const query = this.searchQuery.value?.toLowerCase() || '';
+    this.filteredUsers = this.users.filter(
       (user) =>
-        user.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        user.email.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        user.role.toLowerCase().includes(this.searchQuery.toLowerCase())
+        user.name.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query)
     );
-    */
-    
   }
 
   addUser() {
-    const newUser: User = {
-      id: this.users.length + 1,
-      name: 'Nuevo Usuario',
-      email: `nuevo${this.users.length + 1}@correo.com`,
-      role: 'user',
-    };
-    this.users.push(newUser);
-    this.search(); // Update the filtered list after adding a new user
-    console.log('Agregar usuario:', newUser);
+    this.isEditing = false;
+    this.currentUserId = null;
+    this.newUserName.setValue('');
+    this.newUserEmail.setValue('');
+    this.newUserRole.setValue('');
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  saveUser() {
+    if (this.isEditing && this.currentUserId !== null) {
+      const user = this.users.find(u => u.id === this.currentUserId);
+      if (user) {
+        user.name = this.newUserName.value || '';
+        user.email = this.newUserEmail.value || '';
+        user.role = this.newUserRole.value || '';
+        this.search();
+        console.log('Usuario editado:', user);
+      }
+    } else {
+      const newUser: User = {
+        id: this.users.length + 1,
+        name: this.newUserName.value || '',
+        email: this.newUserEmail.value || '',
+        role: this.newUserRole.value || ''
+      };
+      this.users.push(newUser);
+      this.search();
+      console.log('Usuario agregado:', newUser);
+    }
+    this.closeModal();
   }
 
   editUser(user: User) {
-    const index = this.users.findIndex((u) => u.id === user.id);
-    if (index !== -1) {
-      this.users[index] = { ...user, name: user.name + ' (Editado)' };
-      this.search(); // Update the filtered list after editing a user
-      console.log('Editar usuario:', user);
-    }
+    this.isEditing = true;
+    this.currentUserId = user.id;
+    this.newUserName.setValue(user.name);
+    this.newUserEmail.setValue(user.email);
+    this.newUserRole.setValue(user.role);
+    this.isModalOpen = true;
   }
 
-  deleteUser(user: User) {
-    this.users = this.users.filter((u) => u.id !== user.id);
-    this.search(); // Update the filtered list after deleting a user
-    console.log('Eliminar usuario:', user);
+  openDeleteModal(user: User) {
+    this.userToDelete = user;
+    this.isDeleteModalOpen = true;
+  }
+
+  closeDeleteModal() {
+    this.isDeleteModalOpen = false;
+    this.userToDelete = null;
+  }
+
+  confirmDelete() {
+    if (this.userToDelete) {
+      this.users = this.users.filter((u) => u.id !== this.userToDelete!.id);
+      this.search();
+      console.log('Usuario eliminado:', this.userToDelete);
+      this.closeDeleteModal();
+    }
   }
 }
