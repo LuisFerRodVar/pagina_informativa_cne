@@ -17,7 +17,6 @@ import { HostelsComponent } from './hostels/hostels.component';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    MatSnackBarModule,
   ],
 })
 export class AdminModule { }
