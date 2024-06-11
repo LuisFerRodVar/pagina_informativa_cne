@@ -5,11 +5,13 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users/users.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NewsComponent } from './news/news.component';
+import { HostelsComponent } from './hostels/hostels.component';
 
 @NgModule({
   declarations: [
     UsersComponent,
-    NewsComponent
+    NewsComponent,
+    HostelsComponent,
   ],
   imports: [
     CommonModule,
