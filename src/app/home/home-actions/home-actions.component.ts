@@ -12,12 +12,11 @@ export class HomeActionsComponent implements OnInit {
   currentIndex: number = 0;
   itemsPerPage: number = 3;
   images: { id: string, src: string }[] = [
-    { id: 'img1', src: '../../../assets/img/home/ComoNosPreparamos.webp' },
-    { id: 'img2', src: '../../../assets/img/home/ComoActuar.webp' },
-    { id: 'img3', src: '../../../assets/img/home/ComoActuarInundacion.webp' },
-    { id: 'img4', src: '../../../assets/img/home/ComoNosPreparamos.webp' },
-    { id: 'img5', src: '../../../assets/img/home/ComoActuar.webp' },
-    { id: 'img6', src: '../../../assets/img/home/ComoActuarInundacion.webp' }
+    { id: 'img1', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/2-Inundaciones.png?h=869' },
+    { id: 'img2', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/6-Recopilados-inudaciones.png?h=869' },
+    { id: 'img3', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/5-Recopilados-deslizamientos.png?h=869' },
+    { id: 'img4', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/3-Maletin-emergencia.png?h=869' },
+    { id: 'img5', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/4-Plan-familiar.png?h=869' },
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}

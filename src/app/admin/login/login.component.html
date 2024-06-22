@@ -1,9 +1,12 @@
-<div class="registro-container">
-  <div class="registro-form">
+
+
+
+<div class="login-container">
+  <div class="login-form">
     <div class="escudo">
-        <img src="../../../assets/img/Login/Login.png" alt="Escudo"  />
+      <img src="../../../assets/img/Login/Login.png" alt="Escudo" />
     </div>
-    <form class="form"  [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <form class="form"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <h2>Crear Nueva Cuenta</h2>
       
       <div class="form-group">
@@ -12,11 +15,11 @@
           id="correo"
           formControlName="correo"
           type="email"
-          placeholder="Tu correo"
+          placeholder="Usuario"
         />
       </div>
       <div class="form-group">
-        <label for="contrasena">Contraseña</label>
+        <label for="contrasena">Contraseña:</label>
         <input
           id="contrasena"
           formControlName="contrasena"
@@ -24,9 +27,12 @@
           placeholder="Contraseña"
         />
       </div>
-      <button type="submit" [disabled]="!registroForm.valid">
-        Registrarse
-      </button>
+      <div class="form-remenber">
+        <input type="checkbox" id="recordar" formControlName="recordar" />
+        <label for="recordar">Recordar usuario</label>
+      </div>
+      <button type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+      <a href="#" class="forgot-password">¿Se te olvidó la contraseña?</a>
     </form>
   </div>
 </div>

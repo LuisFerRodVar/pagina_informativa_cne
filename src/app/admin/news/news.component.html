@@ -3,40 +3,129 @@
     <h2>Noticias</h2>
     <div class="search-bar">
       <div class="search">
-        <input type="text" placeholder="Usuario" formControlName="searchQuery" />
+        <input type="text" placeholder="Buscar Noticia" [formControl]="searchQuery" />
         <button (click)="search()">Buscar</button>
       </div>
-      
-      <button class="add-button" (click)="addUser()">+ Agregar</button>
+      <button class="add-button" (click)="addNews()">+ Agregar</button>
     </div>
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>Titulo</th>
+          <th>Título</th>
           <th>Fecha</th>
-          <th>Descripcion</th>
+          <th>Descripción</th>
+          <th>Link</th>
+          <th>Imagen</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        @for (new of news; track $index) {
-        <tr>
-          <td>{{ new.id }}</td>
-          <td>{{ new.title }}</td>
-          <td>{{ new.date }}</td>
-          <td>{{ new.description }}</td>
+        <tr *ngFor="let news of filteredNews">
+          <td>{{ news.id }}</td>
+          <td>{{ news.title }}</td>
+          <td>{{ news.date }}</td>
+          <td>{{ news.description }}</td>
+          <td><a [href]="news.link" target="_blank">{{ news.link }}</a></td>
+          <td><img [src]="news.image" alt="Imagen" width="50"></td>
           <td class="actions-button">
-            <button (click)="editUser(new)">
+            <button (click)="editNews(news)">
               <img src="../../../assets/img/edit.png" alt="Editar" />
             </button>
-            <button (click)="deleteUser(new)">
+            <button (click)="openDeleteModal(news)">
               <img src="../../../assets/img/delete.png" alt="Eliminar" />
             </button>
           </td>
         </tr>
-        }
       </tbody>
     </table>
+
+    <!-- Modal para Agregar/Editar Noticia -->
+    <div *ngIf="isModalOpen" class="modal">
+      <h3>{{ isEditing ? 'Editar Noticia' : 'Agregar Nueva Noticia' }}</h3>
+      <form >
+        <div class="form-group">
+          <label for="title">Título</label>
+          <input
+            type="text"
+            id="title"
+            [formControl]="newTitle"
+            required
+            placeholder="Título de la noticia"
+          />
+          <div *ngIf="newTitle.invalid && (newTitle.dirty || newTitle.touched)" class="error">
+            <div *ngIf="newTitle.errors?.['required']">El título es requerido.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Fecha</label>
+          <input
+            type="text"
+            id="date"
+            [formControl]="newDate"
+            required
+            placeholder="Fecha (dd/mm/yyyy)"
+          />
+          <div *ngIf="newDate.invalid && (newDate.dirty || newDate.touched)" class="error">
+            <div *ngIf="newDate.errors?.['required']">La fecha es requerida.</div>
+            <div *ngIf="newDate.errors?.['invalidDate']">Formato de fecha inválido. Use dd/mm/yyyy.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <textarea
+            id="description"
+            [formControl]="newDescription"
+            required
+            placeholder="Descripción"
+            class="limited-textarea"
+          ></textarea>
+          <div *ngIf="newDescription.invalid && (newDescription.dirty || newDescription.touched)" class="error">
+            <div *ngIf="newDescription.errors?.['required']">La descripción es requerida.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="link">Link</label>
+          <input
+            type="text"
+            id="link"
+            [formControl]="newLink"
+            placeholder="Link a la noticia"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="image">Imagen</label>
+          <input
+            type="text"
+            id="image"
+            [formControl]="newImage"
+            placeholder="URL de la imagen"
+          />
+        </div>
+
+        <div class="modal-buttons">
+          <button (click)="saveNews()" type="submit" [disabled]="newTitle.invalid || newDate.invalid || newDescription.invalid">
+            {{ isEditing ? 'Actualizar' : 'Registrar' }}
+          </button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal de Confirmación de Eliminación -->
+    <div *ngIf="isDeleteModalOpen" class="modal">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que deseas eliminar la noticia {{ newsToDelete?.title }}?</p>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()">Eliminar</button>
+        <button (click)="closeDeleteModal()">Cancelar</button>
+      </div>
+    </div>
   </div>
 </section>
+
+

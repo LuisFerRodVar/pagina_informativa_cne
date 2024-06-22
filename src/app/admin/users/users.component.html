@@ -3,10 +3,14 @@
     <h2>Usuarios</h2>
     <div class="search-bar">
       <div class="search">
-        <input type="text" placeholder="Usuario" formControlName="searchQuery" />
+        <input
+          type="text"
+          placeholder="Nombre o Correo"
+          [formControl]="searchQuery"
+        />
         <button (click)="search()">Buscar</button>
       </div>
-      
+
       <button class="add-button" (click)="addUser()">+ Agregar</button>
     </div>
     <table>
@@ -20,8 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (user of users; track $index) {
-        <tr>
+        <tr *ngFor="let user of filteredUsers">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
@@ -30,15 +33,80 @@
             <button (click)="editUser(user)">
               <img src="../../../assets/img/edit.png" alt="Editar" />
             </button>
-            <button (click)="deleteUser(user)">
+            <button (click)="openDeleteModal(user)">
               <img src="../../../assets/img/delete.png" alt="Eliminar" />
             </button>
           </td>
         </tr>
-        }
       </tbody>
     </table>
-    
 
+    <!-- Modal para Agregar/Editar Usuario -->
+    <div *ngIf="isModalOpen" class="modal">
+      <h3>{{ isEditing ? 'Editar Usuario' : 'Agregar Nuevo Usuario' }}</h3>
+      <form (ngSubmit)="saveUser()">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input
+            type="text"
+            id="name"
+            [formControl]="newUserName"
+            required
+            placeholder="Tu nombre"
+          />
+          <div *ngIf="newUserName.invalid && (newUserName.dirty || newUserName.touched)" class="error">
+            <div *ngIf="newUserName.errors?.['required']">El nombre es requerido.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo</label>
+          <input
+            type="email"
+            id="email"
+            [formControl]="newUserEmail"
+            required
+            placeholder="Email"
+          />
+          <div *ngIf="newUserEmail.invalid && (newUserEmail.dirty || newUserEmail.touched)" class="error">
+            <div *ngIf="newUserEmail.errors?.['required']">El correo es requerido.</div>
+            <div *ngIf="newUserEmail.errors?.['email']">Formato de correo inválido.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Rol</label>
+          <select
+            id="role"
+            [formControl]="newUserRole"
+            required
+          >
+            <option value="" disabled>--Seleccionar--</option>
+            <option value="admin">Administrador</option>
+            <option value="user">Usuario</option>
+          </select>
+          <div *ngIf="newUserRole.invalid && (newUserRole.dirty || newUserRole.touched)" class="error">
+            <div *ngIf="newUserRole.errors?.['required']">El rol es requerido.</div>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button (click)="saveUser()" type="submit" [disabled]="newUserName.invalid || newUserEmail.invalid || newUserRole.invalid">
+            {{ isEditing ? 'Actualizar' : 'Registrar' }}
+          </button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+    
+    <!-- Modal de Confirmación de Eliminación -->
+    <div *ngIf="isDeleteModalOpen" class="modal">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que deseas eliminar al usuario {{ userToDelete?.name }}?</p>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()">Eliminar</button>
+        <button (click)="closeDeleteModal()">Cancelar</button>
+      </div>
+    </div>
   </div>
 </section>
+

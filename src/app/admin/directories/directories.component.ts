@@ -12,19 +12,21 @@ interface Directory {
 
 @Component({
   selector: 'app-directories',
-  standalone: true,
-  imports: [],
   templateUrl: './directories.component.html',
-  styleUrl: './directories.component.css'
+  styleUrls: ['./directories.component.css']
 })
 export class DirectoriesComponent {
   searchQuery = new FormControl('');
-  showRegistrationForm: boolean = false;
   directories: Directory[] = [
     { id: 1, nombre: 'Director 1', cargo: 'Cargo 1', institucion: 'Institución 1', mesa: 'Mesa 1', correo: 'correo1@example.com' },
     { id: 2, nombre: 'Director 2', cargo: 'Cargo 2', institucion: 'Institución 2', mesa: 'Mesa 2', correo: 'correo2@example.com' },
   ];
   filteredDirectories: Directory[] = [...this.directories];
+  isModalOpen = false;
+  isDeleteModalOpen = false;
+  isEditing = false;
+  currentDirectoryId: number | null = null;
+  directoryToDelete: Directory | null = null;
 
   directoryForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
@@ -47,37 +49,73 @@ export class DirectoriesComponent {
   }
 
   addDirectory() {
-    this.showRegistrationForm = true;
-  }
-
-  onSubmit() {
-    /*
-    if (this.directoryForm.valid) {
-      const newDirectory: Directory = {
-        id: this.directories.length + 1,
-        ...this.directoryForm.value
-      };
-      this.directories.push(newDirectory);
-      this.search(); // Update the filtered list after adding a new directory
-      this.showRegistrationForm = false;
-      this.directoryForm.reset();
-    }*/
+    this.isEditing = false;
+    this.currentDirectoryId = null;
+    this.directoryForm.reset();
+    this.isModalOpen = true;
   }
 
   closeModal() {
-    this.showRegistrationForm = false;
+    this.isModalOpen = false;
+  }
+
+  saveDirectory() {
+    if (this.isEditing && this.currentDirectoryId !== null) {
+      const directoryItem = this.directories.find(d => d.id === this.currentDirectoryId);
+      if (directoryItem) {
+        directoryItem.nombre = this.directoryForm.get('nombre')!.value || '';
+        directoryItem.cargo = this.directoryForm.get('cargo')!.value || '';
+        directoryItem.institucion = this.directoryForm.get('institucion')!.value || '';
+        directoryItem.mesa = this.directoryForm.get('mesa')!.value || '';
+        directoryItem.correo = this.directoryForm.get('correo')!.value || '';
+        this.search();
+        console.log('Directorio editado:', directoryItem);
+      }
+    } else {
+      const newDirectory: Directory = {
+        id: this.directories.length + 1,
+        nombre: this.directoryForm.get('nombre')!.value || '',
+        cargo: this.directoryForm.get('cargo')!.value || '',
+        institucion: this.directoryForm.get('institucion')!.value || '',
+        mesa: this.directoryForm.get('mesa')!.value || '',
+        correo: this.directoryForm.get('correo')!.value || ''
+      };
+      this.directories.push(newDirectory);
+      this.search();
+      console.log('Directorio agregado:', newDirectory);
+    }
+    this.closeModal();
   }
 
   editDirectory(directory: Directory) {
-    const index = this.directories.findIndex((d) => d.id === directory.id);
-    if (index !== -1) {
-      this.directories[index] = { ...directory, nombre: directory.nombre + ' (Editado)' };
-      this.search(); // Update the filtered list after editing a directory
-    }
+    this.isEditing = true;
+    this.currentDirectoryId = directory.id;
+    this.directoryForm.setValue({
+      nombre: directory.nombre,
+      cargo: directory.cargo,
+      institucion: directory.institucion,
+      mesa: directory.mesa,
+      correo: directory.correo
+    });
+    this.isModalOpen = true;
   }
 
-  deleteDirectory(directory: Directory) {
-    this.directories = this.directories.filter((d) => d.id !== directory.id);
-    this.search(); // Update the filtered list after deleting a directory
+  openDeleteModal(directory: Directory) {
+    this.directoryToDelete = directory;
+    this.isDeleteModalOpen = true;
+  }
+
+  closeDeleteModal() {
+    this.isDeleteModalOpen = false;
+    this.directoryToDelete = null;
+  }
+
+  confirmDelete() {
+    if (this.directoryToDelete) {
+      this.directories = this.directories.filter((d) => d.id !== this.directoryToDelete!.id);
+      this.search();
+      console.log('Directorio eliminado:', this.directoryToDelete);
+      this.closeDeleteModal();
+    }
   }
 }

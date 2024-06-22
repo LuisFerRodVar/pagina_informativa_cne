@@ -3,7 +3,7 @@
     <h2>Albergues</h2>
     <div class="search-bar">
       <div class="search">
-        <input type="text" placeholder="Buscar" formControl="searchQuery" />
+        <input type="text" placeholder="Buscar" [formControl]="searchQuery" />
         <button (click)="search()">Buscar</button>
       </div>
       <button class="add-button" (click)="addHostel()">+ Agregar</button>
@@ -11,50 +11,165 @@
     <table>
       <thead>
         <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Cantón</th>
-            <th>Distrito</th>
-            <th>Comunidad</th>
-            <th>Responsable</th>
-            <th>Capacidad</th>
-            <th>Contacto</th>
-            <th>Acciones</th>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Cantón</th>
+          <th>Distrito</th>
+          <th>Comunidad</th>
+          <th>Responsable</th>
+          <th>Capacidad</th>
+          <th>Contacto</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        @for (hostel of filteredHostels; track $index) {
-        <tr>
-            <td>{{ hostel.id }}</td>
-            <td>{{ hostel.nombre }}</td>
-            <td>{{ hostel.canton }}</td>
-            <td>{{ hostel.distrito }}</td>
-            <td>{{ hostel.comunidad }}</td>
-            <td>{{ hostel.responsable }}</td>
-            <td>{{ hostel.capacidad }}</td>
-            <td>{{ hostel.contacto }}</td>
+        <tr *ngFor="let hostel of filteredHostels; let i = index">
+          <td>{{ hostel.id }}</td>
+          <td>{{ hostel.nombre }}</td>
+          <td>{{ hostel.canton }}</td>
+          <td>{{ hostel.distrito }}</td>
+          <td>{{ hostel.comunidad }}</td>
+          <td>{{ hostel.responsable }}</td>
+          <td>{{ hostel.capacidad }}</td>
+          <td>{{ hostel.contacto }}</td>
           <td class="actions-button">
             <button (click)="editHostel(hostel)">
               <img src="../../../assets/img/edit.png" alt="Editar" />
             </button>
-            <button (click)="deleteHostel(hostel)">
+            <button (click)="openDeleteModal(hostel)">
               <img src="../../../assets/img/delete.png" alt="Eliminar" />
             </button>
           </td>
         </tr>
-        }
       </tbody>
     </table>
-    <!--  
-    @if ("showRegistrationForm") {
-    <div class="modal">
-      <app-hostels-registration
-        (hostelRegistered)="onHostelRegistered($event)"
-      ></app-hostels-registration>
-      <button class="close-button" (click)="closeModal()">Cerrar</button>
+
+    <!-- Modal para Agregar/Editar Albergue -->
+    <div *ngIf="isModalOpen" class="modal">
+      <h3>{{ isEditing ? "Editar Albergue" : "Agregar Nuevo Albergue" }}</h3>
+      <form >
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            [formControl]="newNombre"
+            required
+            placeholder="Nombre del albergue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="canton">Cantón</label>
+          <input
+            type="text"
+            id="canton"
+            [formControl]="newCanton"
+            required
+            placeholder="Cantón"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="distrito">Distrito</label>
+          <input
+            type="text"
+            id="distrito"
+            [formControl]="newDistrito"
+            required
+            placeholder="Distrito"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="comunidad">Comunidad</label>
+          <input
+            type="text"
+            id="comunidad"
+            [formControl]="newComunidad"
+            required
+            placeholder="Comunidad"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="responsable">Responsable</label>
+          <input
+            type="text"
+            id="responsable"
+            [formControl]="newResponsable"
+            required
+            placeholder="Responsable"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="capacidad">Capacidad</label>
+          <input
+            type="number"
+            id="capacidad"
+            [formControl]="newCapacidad"
+            required
+            placeholder="Capacidad"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contacto">Correo de Contacto</label>
+          <input
+            type="email"
+            id="contacto"
+            [formControl]="newContacto"
+            required
+            placeholder="Correo de contacto"
+          />
+          <div
+            *ngIf="
+              newContacto.invalid && (newContacto.dirty || newContacto.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="newContacto.errors?.['required']">
+              El correo es requerido.
+            </div>
+            <div *ngIf="newContacto.errors?.['email']">
+              Formato de correo inválido.
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button
+            (click)="saveHostel()"
+            type="submit"
+            [disabled]="
+              newNombre.invalid ||
+              newCanton.invalid ||
+              newDistrito.invalid ||
+              newComunidad.invalid ||
+              newResponsable.invalid ||
+              newCapacidad.invalid ||
+              newContacto.invalid
+            "
+          >
+            {{ isEditing ? "Actualizar" : "Registrar" }}
+          </button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
     </div>
-    }
-    -->
-    
+
+    <!-- Modal de Confirmación de Eliminación -->
+    <div *ngIf="isDeleteModalOpen" class="modal">
+      <h3>Confirmar Eliminación</h3>
+      <p>
+        ¿Estás seguro de que deseas eliminar el albergue
+        {{ hostelToDelete?.nombre }}?
+      </p>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()">Eliminar</button>
+        <button (click)="closeDeleteModal()">Cancelar</button>
+      </div>
+    </div>
   </div>
 </section>

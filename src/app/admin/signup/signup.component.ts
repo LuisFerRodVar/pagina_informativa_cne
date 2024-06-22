@@ -8,21 +8,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  loginForm!: FormGroup;
+  registroForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.registroForm = this.fb.group({
+      nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]],
-      recordar: [false]
+      contrasena: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      console.log('Formulario Enviado', this.loginForm.value);
+    if (this.registroForm.valid) {
+      console.log('Formulario Enviado', this.registroForm.value);
       // Aquí puedes manejar el envío del formulario, como enviarlo a un servidor
     }
   }

@@ -17,12 +17,14 @@ import {
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  registroForm!: FormGroup;
+  
+
+  loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private auth: AngularFireAuth) {}
 
   ngOnInit(): void {
-    this.registroForm = this.fb.group({
+    this.loginForm = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -30,12 +32,12 @@ export class LoginComponent {
 
   async onSubmit() {
   
-    if (this.registroForm.valid) {
+    if (this.loginForm.valid) {
   
-      console.log('Formulario Enviado', this.registroForm.value);
+      console.log('Formulario Enviado', this.loginForm.value);
       // Aquí puedes manejar el envío del formulario, como enviarlo a un servidor
-      const password = this.registroForm.value['contrasena'];
-      const email = this.registroForm.value['correo'];
+      const password = this.loginForm.value['contrasena'];
+      const email = this.loginForm.value['correo'];
       console.log({email,password});
       const result = await this.auth.signInWithEmailAndPassword(
         email,

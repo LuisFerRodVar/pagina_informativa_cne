@@ -1,57 +1,173 @@
 <section>
-    <div class="table-container">
-        <h2>Comité Comunales (CCE)</h2>
-      <div class="search-bar">
-        <div class="search">
-          <input type="text" placeholder="Buscar" formControl="searchQuery" />
-          <button (click)="search()">Buscar</button>
-        </div>
-        <button class="add-button" (click)="addCommittee()">+ Agregar</button>
+  <div class="table-container">
+    <h2>Comité Comunales (CCE)</h2>
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" placeholder="Buscar" [formControl]="searchQuery" />
+        <button (click)="search()">Buscar</button>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Cantón</th>
-            <th>Distrito</th>
-            <th>Comunidad</th>
-            <th>Responsable</th>
-            <th>Contacto</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (committee  of filteredCommittees; track $index) {
-          <tr>
-            <td>{{ committee.id }}</td>
-            <td>{{ committee.nombre }}</td>
-            <td>{{ committee.canton }}</td>
-            <td>{{ committee.distrito }}</td>
-            <td>{{ committee.comunidad }}</td>
-            <td>{{ committee.responsable }}</td>
-            <td>{{ committee.contacto }}</td>
-            <td class="actions-button">
-              <button (click)="editCommittee(committee)">
-                <img src="../../../assets/img/edit.png" alt="Editar" />
-              </button>
-              <button (click)="deleteCommittee(committee)">
-                <img src="../../../assets/img/delete.png" alt="Eliminar" />
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-      <!--  
-      @if ("showRegistrationForm") {
-      <div class="modal">
-        <app-committee-registration (committeeRegistered)="onCommitteeRegistered($event)"></app-committee-registration>
-        <button class="close-button" (click)="closeModal()">Cerrar</button>
-      </div>
-      }
-      -->
-      
+      <button class="add-button" (click)="addCommittee()">+ Agregar</button>
     </div>
-  </section>
-  
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Cantón</th>
+          <th>Distrito</th>
+          <th>Comunidad</th>
+          <th>Responsable</th>
+          <th>Correo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let committee of filteredCommittees; let i = index;">
+          <td>{{ committee.id }}</td>
+          <td>{{ committee.nombre }}</td>
+          <td>{{ committee.canton }}</td>
+          <td>{{ committee.distrito }}</td>
+          <td>{{ committee.comunidad }}</td>
+          <td>{{ committee.responsable }}</td>
+          <td>{{ committee.contacto }}</td>
+          <td class="actions-button">
+            <button (click)="editCommittee(committee)">
+              <img src="../../../assets/img/edit.png" alt="Editar" />
+            </button>
+            <button (click)="openDeleteModal(committee)">
+              <img src="../../../assets/img/delete.png" alt="Eliminar" />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal para Agregar/Editar Comité -->
+    <div *ngIf="isModalOpen" class="modal">
+      <h3>{{ isEditing ? 'Editar Comité' : 'Agregar Nuevo Comité' }}</h3>
+      <form [formGroup]="committeeForm" >
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            formControlName="nombre"
+            required
+            placeholder="Nombre del comité"
+          />
+          <div *ngIf="committeeForm.get('nombre')!.invalid && (committeeForm.get('nombre')!.dirty || committeeForm.get('nombre')!.touched)" class="error">
+            <div *ngIf="committeeForm.get('nombre')!.errors?.['required']">
+              El nombre es requerido.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="canton">Cantón</label>
+          <input
+            type="text"
+            id="canton"
+            formControlName="canton"
+            required
+            placeholder="Cantón"
+          />
+          <div *ngIf="committeeForm.get('canton')!.invalid && (committeeForm.get('canton')!.dirty || committeeForm.get('canton')!.touched)" class="error">
+            <div *ngIf="committeeForm.get('canton')!.errors?.['required']">
+              El cantón es requerido.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="distrito">Distrito</label>
+          <input
+            type="text"
+            id="distrito"
+            formControlName="distrito"
+            required
+            placeholder="Distrito"
+          />
+          <div *ngIf="committeeForm.get('distrito')!.invalid && (committeeForm.get('distrito')!.dirty || committeeForm.get('distrito')!.touched)" class="error">
+            <div *ngIf="committeeForm.get('distrito')!.errors?.['required']">
+              El distrito es requerido.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comunidad">Comunidad</label>
+          <input
+            type="text"
+            id="comunidad"
+            formControlName="comunidad"
+            required
+            placeholder="Comunidad"
+          />
+          <div *ngIf="committeeForm.get('comunidad')!.invalid && (committeeForm.get('comunidad')!.dirty || committeeForm.get('comunidad')!.touched)" class="error">
+            <div *ngIf="committeeForm.get('comunidad')!.errors?.['required']">
+              La comunidad es requerida.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="responsable">Responsable</label>
+          <input
+            type="text"
+            id="responsable"
+            formControlName="responsable"
+            required
+            placeholder="Responsable"
+          />
+          <div *ngIf="committeeForm.get('responsable')!.invalid && (committeeForm.get('responsable')!.dirty || committeeForm.get('responsable')!.touched)" class="error">
+            <div *ngIf="committeeForm.get('responsable')!.errors?.['required']">
+              El responsable es requerido.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contacto">Correo de Contacto</label>
+          <input
+            type="email"
+            id="contacto"
+            formControlName="contacto"
+            required
+            placeholder="Correo de contacto"
+          />
+          <div
+            *ngIf="
+              committeeForm.get('contacto')!.invalid &&
+              (committeeForm.get('contacto')!.dirty || committeeForm.get('contacto')!.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="committeeForm.get('contacto')!.errors?.['required']">
+              El correo es requerido.
+            </div>
+            <div *ngIf="committeeForm.get('contacto')!.errors?.['email']">
+              Formato de correo inválido.
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button (click)="saveCommittee()" type="submit" [disabled]="committeeForm.invalid">
+            {{ isEditing ? 'Actualizar' : 'Registrar' }}
+          </button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal de Confirmación de Eliminación -->
+    <div *ngIf="isDeleteModalOpen" class="modal">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que deseas eliminar el comité {{ committeeToDelete?.nombre }}?</p>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()">Eliminar</button>
+        <button (click)="closeDeleteModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</section>
