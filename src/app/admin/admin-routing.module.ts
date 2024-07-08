@@ -17,7 +17,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
   },
   { path: 'usuarios', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'noticias', component: NewsComponent, canActivate: [AuthGuard] },
@@ -26,7 +25,6 @@ const routes: Routes = [
   {
     path: 'directorio',
     component: DirectoriesComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'configuraciones',

@@ -22,13 +22,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let directory of filteredDirectories; let i = index;">
-          <td>{{ directory.id }}</td>
-          <td>{{ directory.nombre }}</td>
-          <td>{{ directory.cargo }}</td>
-          <td>{{ directory.institucion }}</td>
-          <td>{{ directory.mesa }}</td>
-          <td>{{ directory.correo }}</td>
+        <tr *ngFor="let directory of filteredDirectories; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ directory.name }}</td>
+          <td>{{ directory.job }}</td>
+          <td>{{ directory.institution }}</td>
+          <td>{{ directory.table }}</td>
+          <td>{{ directory.mail }}</td>
           <td class="actions-button">
             <button (click)="editDirectory(directory)">
               <img src="../../../assets/img/edit.png" alt="Editar" />
@@ -43,7 +43,9 @@
 
     <!-- Modal para Agregar/Editar Directorio -->
     <div *ngIf="isModalOpen" class="modal">
-      <h3>{{ isEditing ? 'Editar Directorio' : 'Agregar Nuevo Directorio' }}</h3>
+      <h3>
+        {{ isEditing ? "Editar Directorio" : "Agregar Nuevo Directorio" }}
+      </h3>
       <form [formGroup]="directoryForm" (ngSubmit)="saveDirectory()">
         <div class="form-group">
           <label for="nombre">Nombre</label>
@@ -101,7 +103,8 @@
           <div
             *ngIf="
               directoryForm.get('correo')!.invalid &&
-              (directoryForm.get('correo')!.dirty || directoryForm.get('correo')!.touched)
+              (directoryForm.get('correo')!.dirty ||
+                directoryForm.get('correo')!.touched)
             "
             class="error"
           >
@@ -116,7 +119,7 @@
 
         <div class="modal-buttons">
           <button type="submit" [disabled]="directoryForm.invalid">
-            {{ isEditing ? 'Actualizar' : 'Registrar' }}
+            {{ isEditing ? "Actualizar" : "Registrar" }}
           </button>
           <button type="button" (click)="closeModal()">Cancelar</button>
         </div>
@@ -126,7 +129,10 @@
     <!-- Modal de Confirmación de Eliminación -->
     <div *ngIf="isDeleteModalOpen" class="modal">
       <h3>Confirmar Eliminación</h3>
-      <p>¿Estás seguro de que deseas eliminar el directorio {{ directoryToDelete?.nombre }}?</p>
+      <p>
+        ¿Estás seguro de que deseas eliminar el directorio
+        {{ directoryToDelete?.nombre }}?
+      </p>
       <div class="modal-buttons">
         <button (click)="confirmDelete()">Eliminar</button>
         <button (click)="closeDeleteModal()">Cancelar</button>
