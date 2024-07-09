@@ -6,10 +6,11 @@
     <div class="escudo">
       <img src="../../../assets/img/Login/Login.png" alt="Escudo" />
     </div>
-    <form class="form" (ngSubmit)="onSubmit()">
-      <h2>Iniciar Sesión</h2>
+    <form class="form"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2>Crear Nueva Cuenta</h2>
+      
       <div class="form-group">
-        <label for="correo">Correo:</label>
+        <label for="correo">Correo</label>
         <input
           id="correo"
           formControlName="correo"
