@@ -9,6 +9,8 @@ import {
   AngularFireAuth,
   AngularFireAuthModule,
 } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -16,12 +18,15 @@ import {
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
-  
+export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AngularFireAuth) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -31,20 +36,23 @@ export class LoginComponent {
   }
 
   async onSubmit() {
-  
     if (this.loginForm.valid) {
-  
-      console.log('Formulario Enviado', this.loginForm.value);
-      // Aquí puedes manejar el envío del formulario, como enviarlo a un servidor
+      //console.log('Formulario Enviado', this.loginForm.value);
       const password = this.loginForm.value['contrasena'];
       const email = this.loginForm.value['correo'];
-      console.log({email,password});
-      const result = await this.auth.signInWithEmailAndPassword(
-        email,
-        password
-      );
-      const token=await result.user?.getIdToken()
-      console.log({result,token});
+      console.log({ email, password });
+
+      try {
+        const result = await this.auth.signInWithEmailAndPassword(email, password);
+        const token = await result.user?.getIdToken();
+        //console.log({ result, token });
+
+        // Redirigir a /dashboard después de la autenticación exitosa
+        this.router.navigate(['/admin/dashboard']);
+      } catch (error) {
+        //console.error('Error de autenticación', error);
+      }
     }
   }
 }
+
