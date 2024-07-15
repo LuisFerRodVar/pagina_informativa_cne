@@ -9,6 +9,7 @@ interface New {
   description: string;
   link: string;
   image: string;
+  active: boolean;
 }
 
 @Component({
@@ -22,9 +23,11 @@ export class NewsComponent implements OnInit {
   filteredNews: New[] = [];
   isModalOpen = false;
   isDeleteModalOpen = false;
+  isImageModalOpen = false;
   isEditing = false;
   currentNewsId: string | null = null;
   newsToDelete: New | null = null;
+  currentImage: string | null = null;
 
   newTitle = new FormControl('', Validators.required);
   newDate = new FormControl('', [Validators.required, this.dateValidator]);
@@ -83,7 +86,8 @@ export class NewsComponent implements OnInit {
         date: this.newDate.value || '',
         description: this.newDescription.value || '',
         link: this.newLink.value || '',
-        image: this.newImage.value || ''
+        image: this.newImage.value || '',
+        active: true
       };
       this.newsService.addNews(newNews).then(() => {
         console.log('Noticia agregada:', newNews);
@@ -119,6 +123,25 @@ export class NewsComponent implements OnInit {
         console.log('Noticia eliminada:', this.newsToDelete);
       });
       this.closeDeleteModal();
+    }
+  }
+
+  openImageModal(image: string) {
+    this.currentImage = image;
+    this.isImageModalOpen = true;
+  }
+
+  closeImageModal() {
+    this.currentImage = null;
+    this.isImageModalOpen = false;
+  }
+
+  toggleActive(news: New) {
+    if (news.id) {
+      const updatedNews: Partial<New> = { active: !news.active };
+      this.newsService.updateNews(news.id, updatedNews).then(() => {
+        console.log(`Noticia ${news.active ? 'desactivada' : 'activada'}:`, news);
+      });
     }
   }
 
