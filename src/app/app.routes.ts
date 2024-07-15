@@ -8,14 +8,12 @@ import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
-  { path: 'dashboard', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'cce', component: CceComponent },
   { path: 'albergues', component: HostelComponent },
   { path: 'directorio', component: DirectoryComponent },
   { path: 'acerca', component: AboutComponent },
   { path: 'admin', component: AdminComponent ,loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
