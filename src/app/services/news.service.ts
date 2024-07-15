@@ -10,6 +10,7 @@ interface New {
   description: string;
   link: string;
   image: string;
+  active: boolean;
 }
 
 @Injectable({
@@ -42,3 +43,4 @@ export class NewsService {
     return this.firestore.collection(this.collectionName).doc(id).delete();
   }
 }
+
