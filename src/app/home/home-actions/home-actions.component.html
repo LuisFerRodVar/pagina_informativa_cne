@@ -7,10 +7,21 @@
     <div class="carousel" [style.transform]="getTransform()">
       @for (image of images; track image.id) {
       <div class="carousel-item">
-        <img [src]="image.src" [alt]="image.id" />
+        <img [src]="image.src" [alt]="image.id"  (click)="openImageModal(image.src)"/>
       </div>
       }
     </div> 
     <button class="next" (click)="nextSlide()">❯</button>
   </div>
+
+  <!-- Modal de Imagen 
+   @if (isModalOpen) {
+    <div class="modal" (click)="closeImageModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close" (click)="closeImageModal()">&times;</span>
+        <img [src]="currentImageSrc" alt="Imagen Grande" class="modal-image">
+      </div>
+    </div>
+   }-->
+  
 </section>

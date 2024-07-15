@@ -6,7 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
   standalone: true,
   imports: [],
   templateUrl: './home-actions.component.html',
-  styleUrl: './home-actions.component.css'
+  styleUrls: ['./home-actions.component.css']
 })
 export class HomeActionsComponent implements OnInit {
   currentIndex: number = 0;
@@ -18,6 +18,8 @@ export class HomeActionsComponent implements OnInit {
     { id: 'img4', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/3-Maletin-emergencia.png?h=869' },
     { id: 'img5', src: 'http://www.cne.go.cr/preparativos_respuestas/multimedios/afiches/4-Plan-familiar.png?h=869' },
   ];
+  isModalOpen: boolean = false;
+  currentImageSrc: string | null = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
@@ -47,7 +49,7 @@ export class HomeActionsComponent implements OnInit {
   }
 
   getTransform(): string {
-    return `translateX(-${this.currentIndex * 100 / this.itemsPerPage}%)`;
+    return `translateX(-${(this.currentIndex * 100) / this.itemsPerPage}%)`;
   }
 
   nextSlide(): void {
@@ -73,5 +75,15 @@ export class HomeActionsComponent implements OnInit {
     if (carousel) {
       carousel.style.transform = this.getTransform();
     }
+  }
+
+  openImageModal(src: string): void {
+    this.currentImageSrc = src;
+    this.isModalOpen = true;
+  }
+
+  closeImageModal(): void {
+    this.isModalOpen = false;
+    this.currentImageSrc = null;
   }
 }
