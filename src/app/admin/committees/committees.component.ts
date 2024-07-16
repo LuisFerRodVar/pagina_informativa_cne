@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommitteesService } from '../../services/committee.service';
 
 interface Committee {
   id: number;
@@ -16,14 +17,10 @@ interface Committee {
   templateUrl: './committees.component.html',
   styleUrls: ['./committees.component.css']
 })
-export class CommitteesComponent {
+export class CommitteesComponent implements OnInit {
   searchQuery = new FormControl('');
-  committees: Committee[] = [
-    { id: 1, nombre: 'Comité 1', canton: 'Cantón 1', distrito: 'Distrito 1', comunidad: 'Comunidad 1', responsable: 'Responsable 1', contacto: 'contacto1@example.com' },
-    { id: 2, nombre: 'Comité 2', canton: 'Cantón 2', distrito: 'Distrito 2', comunidad: 'Comunidad 2', responsable: 'Responsable 2', contacto: 'contacto2@example.com' },
-    { id: 3, nombre: 'Comité 3', canton: 'Cantón 3', distrito: 'Distrito 3', comunidad: 'Comunidad 3', responsable: 'Responsable 3', contacto: 'contacto3@example.com' },
-  ];
-  filteredCommittees: Committee[] = [...this.committees];
+  committees: Committee[] = [];
+  filteredCommittees: Committee[] = [];
   isModalOpen = false;
   isDeleteModalOpen = false;
   isEditing = false;
@@ -38,6 +35,15 @@ export class CommitteesComponent {
     responsable: new FormControl('', Validators.required),
     contacto: new FormControl('', [Validators.required, Validators.email]),
   });
+
+  constructor(private committeeService: CommitteesService) { }
+
+  ngOnInit() {
+    this.committeeService.getCommittees().subscribe(committees => {
+      this.committees = committees;
+      this.filteredCommittees = committees;
+    });
+  }
 
   search() {
     const query = this.searchQuery.value?.toLowerCase() || '';
@@ -68,17 +74,18 @@ export class CommitteesComponent {
       return;
     }
     if (this.isEditing && this.currentCommitteeId !== null) {
-      const committeeItem = this.committees.find(c => c.id === this.currentCommitteeId);
-      if (committeeItem) {
-        committeeItem.nombre = this.committeeForm.get('nombre')!.value ?? '';
-        committeeItem.canton = this.committeeForm.get('canton')!.value ?? '';
-        committeeItem.distrito = this.committeeForm.get('distrito')!.value ?? '';
-        committeeItem.comunidad = this.committeeForm.get('comunidad')!.value ?? '';
-        committeeItem.responsable = this.committeeForm.get('responsable')!.value ?? '';
-        committeeItem.contacto = this.committeeForm.get('contacto')!.value ?? '';
+      const updatedCommittee: Partial<Committee> = {
+        nombre: this.committeeForm.get('nombre')!.value ?? '',
+        canton: this.committeeForm.get('canton')!.value ?? '',
+        distrito: this.committeeForm.get('distrito')!.value ?? '',
+        comunidad: this.committeeForm.get('comunidad')!.value ?? '',
+        responsable: this.committeeForm.get('responsable')!.value ?? '',
+        contacto: this.committeeForm.get('contacto')!.value ?? ''
+      };
+      this.committeeService.updateCommittees(this.currentCommitteeId, updatedCommittee).subscribe(() => {
+        console.log('Comité editado:', updatedCommittee);
         this.search();
-        console.log('Comité editado:', committeeItem);
-      }
+      });
     } else {
       const newCommittee: Committee = {
         id: this.committees.length + 1,
@@ -89,9 +96,10 @@ export class CommitteesComponent {
         responsable: this.committeeForm.get('responsable')!.value ?? '',
         contacto: this.committeeForm.get('contacto')!.value ?? ''
       };
-      this.committees.push(newCommittee);
-      this.search();
-      console.log('Comité agregado:', newCommittee);
+      this.committeeService.addCommittees(newCommittee).then(() => {
+        this.search();
+        console.log('Comité agregado:', newCommittee);
+      });
     }
     this.closeModal();
   }
@@ -122,10 +130,15 @@ export class CommitteesComponent {
 
   confirmDelete() {
     if (this.committeeToDelete) {
-      this.committees = this.committees.filter((c) => c.id !== this.committeeToDelete!.id);
-      this.search();
-      console.log('Comité eliminado:', this.committeeToDelete);
-      this.closeDeleteModal();
+      this.committeeService.deleteCommittees(this.committeeToDelete.id).subscribe(() => {
+        console.log('Comité eliminado:', this.committeeToDelete);
+        this.closeDeleteModal();
+        // Actualiza la lista de comités después de eliminar
+        this.committeeService.getCommittees().subscribe(committees => {
+          this.committees = committees;
+          this.filteredCommittees = committees;
+        });
+      });
     }
   }
 }

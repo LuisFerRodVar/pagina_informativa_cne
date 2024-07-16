@@ -1,7 +1,8 @@
+
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 
 interface Committee {
   id: number;
@@ -17,7 +18,7 @@ interface Committee {
   providedIn: 'root'
 })
 export class CommitteesService {
-  private collectionName = 'comitees';
+  private collectionName = 'committees';
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -35,12 +36,30 @@ export class CommitteesService {
     return this.firestore.collection(this.collectionName).add(news);
   }
 
-  updateCommittees(id: string, news: Partial<Committee>) {
-    return this.firestore.collection(this.collectionName).doc(id).update(news);
+  updateCommittees(customId: number, news: Partial<Committee>): Observable<void> {
+    return this.firestore.collection(this.collectionName, ref => ref.where("id", "==", customId)).snapshotChanges().pipe(
+      take(1),
+      switchMap(actions => {
+        if (actions.length === 0) {
+          throw new Error(`No committee found with id: ${customId}`);
+        }
+        const docId = actions[0].payload.doc.id;
+        return this.firestore.collection(this.collectionName).doc(docId).update(news);
+      })
+    );
   }
 
-  deleteCommittees(id: string) {
-    return this.firestore.collection(this.collectionName).doc(id).delete();
+  deleteCommittees(customId: number): Observable<void> {
+    return this.firestore.collection(this.collectionName, ref => ref.where("id", "==", customId)).snapshotChanges().pipe(
+      take(1),
+      switchMap(actions => {
+        if (actions.length === 0) {
+          throw new Error(`No committee found with id: ${customId}`);
+        }
+        const docId = actions[0].payload.doc.id;
+        return this.firestore.collection(this.collectionName).doc(docId).delete();
+      })
+    );
   }
 }
 
