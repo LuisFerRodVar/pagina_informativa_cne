@@ -133,7 +133,6 @@ export class CommitteesComponent implements OnInit {
       this.committeeService.deleteCommittees(this.committeeToDelete.id).subscribe(() => {
         console.log('Comité eliminado:', this.committeeToDelete);
         this.closeDeleteModal();
-        // Actualiza la lista de comités después de eliminar
         this.committeeService.getCommittees().subscribe(committees => {
           this.committees = committees;
           this.filteredCommittees = committees;

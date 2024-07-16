@@ -143,7 +143,6 @@ saveHostel() {
       this.hostelService.deleteHostels(this.hostelToDelete.id).subscribe(() => {
         console.log('Albergue eliminado:', this.hostelToDelete);
         this.closeDeleteModal();
-        // Actualiza la lista de hostels después de eliminar
         this.hostelService.getHostels().subscribe(hostels => {
           this.hostels = hostels;
           this.filteredHostels = hostels;
