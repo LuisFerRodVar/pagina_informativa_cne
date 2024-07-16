@@ -3,11 +3,11 @@
     <img src="../../assets/img/escudo1.gif" alt="Logo de la municipalidad de Golfito">
   </div>
   <section>
-
-    <span routerLink='/' routerLinkActive='active'>Inicio</span>
-    <span routerLink='/cce' routerLinkActive='active'>Comités Comunales</span>
-    <span routerLink='/albergues' routerLinkActive='active'>Albergues</span>
-    <span routerLink='/directorio' routerLinkActive='active'>Comité Municipal</span>
-    <span routerLink='/acerca' routerLinkActive='active'>Acerca de</span>
+    <span routerLink='' (click)="togleCurrent(0)" [ngClass]="{'active': current === 0}">Inicio</span>
+    <span routerLink='/cce' (click)="togleCurrent(1)" [ngClass]="{'active': current === 1}">Comités Comunales</span>
+    <span routerLink='/albergues' (click)="togleCurrent(2)" [ngClass]="{'active': current === 2}">Albergues</span>
+    <span routerLink='/directorio' (click)="togleCurrent(3)" [ngClass]="{'active': current === 3}">Comité Municipal</span>
+    <span routerLink='/acerca' (click)="togleCurrent(4)" [ngClass]="{'active': current === 4}">Acerca de</span>
   </section>
 </nav>
+
