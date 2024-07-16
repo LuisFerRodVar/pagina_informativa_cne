@@ -5,5 +5,9 @@ export class DirectoryDto {
   job: string;
   institution: string;
   mail: string;
-  isActivate?:number;
+  isActivate?: number;
+}
+export class TableDto {
+  name: string;
+  items: DirectoryDto[];
 }

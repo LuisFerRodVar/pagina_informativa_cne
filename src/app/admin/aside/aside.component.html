@@ -1,39 +1,46 @@
 <aside>
   <div>
     @if (!collapsed){
-      <img src="../../../assets/img/Login/Escudo.webp" alt="Escudo de municipalidad">
-      <p>Municipalidad</p>
+    <img
+      src="../../../assets/img/Login/Escudo.webp"
+      alt="Escudo de municipalidad"
+    />
+    <p>Municipalidad</p>
     }
-    <fa-icon (click) = "toggleCollapsed()" [icon]="faBars"></fa-icon>
+    <fa-icon (click)="toggleCollapsed()" [icon]="faBars"></fa-icon>
   </div>
   <nav>
-    <article routerLink='/admin/dashboard' routerLinkActive='active'>
-      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faHome"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Inicio</span>
+    <article routerLink="/admin/dashboard" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faHome"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Inicio</span>
     </article>
-    <article routerLink='/admin/usuarios' routerLinkActive='active'>
-      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faUser"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Usuarios</span>
+    <article routerLink="/admin/usuarios" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faUser"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Usuarios</span>
     </article>
-    <article routerLink='/admin/noticias' routerLinkActive='active'>
-      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faNews"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Noticias</span>
+    <article routerLink="/admin/noticias" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faNews"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Noticias</span>
     </article>
-    <article routerLink='/admin/albergues' routerLinkActive='active'>
-      <fa-icon [ngClass]="{'center': collapsed}" [icon]="faBuilding"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Albergues</span>
+    <article routerLink="/admin/albergues" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faBuilding"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Albergues</span>
     </article>
-    <article routerLink='/admin/comites' routerLinkActive='active'>
-      <fa-icon  [ngClass]="{'center': collapsed}" [icon]="faSchool"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Comités Comunales</span>
+    <article routerLink="/admin/comites" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faSchool"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Comités Comunales</span>
     </article>
-    <article routerLink='/admin/directorio' routerLinkActive='active'>
-      <fa-icon  [ngClass]="{'center': collapsed}" [icon]="faBook"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Directorio</span>
+    <article routerLink="/admin/directorio" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faBook"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Directorio</span>
     </article>
-    <article routerLink='/admin/configuraciones' routerLinkActive='active'>
-      <fa-icon  [ngClass]="{'center': collapsed}" [icon]="faGear"></fa-icon>
-      <span [ngClass]="{'hidden': collapsed}">Configuraciones</span>
+    <article routerLink="/admin/bitacora" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faBook"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Bitacora</span>
+    </article>
+    <article routerLink="/admin/configuraciones" routerLinkActive="active">
+      <fa-icon [ngClass]="{ center: collapsed }" [icon]="faGear"></fa-icon>
+      <span [ngClass]="{ hidden: collapsed }">Configuraciones</span>
     </article>
   </nav>
 </aside>

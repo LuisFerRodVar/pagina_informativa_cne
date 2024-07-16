@@ -10,6 +10,8 @@ import { DirectoriesComponent } from './directories/directories.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NewsComponent } from './news/news.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { BinnacleComponent } from './binnacle/binnacle.component';
+import { BinnaclesComponent } from './binnacles/binnacles.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +32,14 @@ const routes: Routes = [
     path: 'configuraciones',
     component: SettingsComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'bitacora',
+    component: BinnacleComponent,
+  },
+  {
+    path: 'bitacoras',
+    component: BinnaclesComponent,
   },
 ];
 
