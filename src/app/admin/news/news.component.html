@@ -11,23 +11,23 @@
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th style="display: none;">ID</th>
           <th>Título</th>
           <th>Fecha</th>
           <th>Descripción</th>
           <th>Link</th>
           <th>Imagen</th>
-          <th>Acciones</th>
+          <th style="width: 150px;">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let news of filteredNews">
-          <td>{{ news.id }}</td>
+          <td style="display: none;">{{ news.id }}</td>
           <td>{{ news.title }}</td>
           <td>{{ news.date }}</td>
           <td>{{ news.description }}</td>
-          <td><a [href]="news.link" target="_blank">{{ news.link }}</a></td>
-          <td><img [src]="news.image" alt="Imagen" width="50"></td>
+          <td><a [href]="news.link" target="_blank">{{ news.link | slice:0:30 }}...</a></td>
+          <td><img class="img-modal" [src]="news.image" alt="Imagen" width="50" (click)="openImageModal(news.image)"></td>
           <td class="actions-button">
             <button (click)="editNews(news)">
               <img src="../../../assets/img/edit.png" alt="Editar" />
@@ -35,6 +35,11 @@
             <button (click)="openDeleteModal(news)">
               <img src="../../../assets/img/delete.png" alt="Eliminar" />
             </button>
+            <!--
+            <button (click)="toggleActive(news)">
+              <img src="../../../assets/img/{{ news.active ? 'active.png' : 'inactive.png' }}" alt="Toggle Active" />
+            </button>
+            -->
           </td>
         </tr>
       </tbody>
@@ -43,7 +48,7 @@
     <!-- Modal para Agregar/Editar Noticia -->
     <div *ngIf="isModalOpen" class="modal">
       <h3>{{ isEditing ? 'Editar Noticia' : 'Agregar Nueva Noticia' }}</h3>
-      <form >
+      <form>
         <div class="form-group">
           <label for="title">Título</label>
           <input
@@ -125,7 +130,14 @@
         <button (click)="closeDeleteModal()">Cancelar</button>
       </div>
     </div>
+
+    <!-- Modal para Ver Imagen -->
+    <div *ngIf="isImageModalOpen" class="modal">
+      <h3>Imagen</h3>
+      <img [src]="currentImage" alt="Imagen Grande" class="modal-image">
+      <div class="modal-buttons">
+        <button type="button" (click)="closeImageModal()">Cerrar</button>
+      </div>
+    </div>
   </div>
 </section>
-
-

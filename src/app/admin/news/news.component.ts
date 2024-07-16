@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { NewsService } from '../../services/news.service';
 
 interface New {
-  id: number;
+  id?: string;
   title: string;
   date: string;
   description: string;
   link: string;
   image: string;
+  active: boolean;
 }
 
 @Component({
@@ -15,19 +17,17 @@ interface New {
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })
-export class NewsComponent {
+export class NewsComponent implements OnInit {
   searchQuery = new FormControl('');
-  news: New[] = [
-    { id: 1, title: 'Informacion general', date: '24/05/2024', description: 'Los sucesos se encuentran en desarrollo', link: 'https://example.com', image: 'https://via.placeholder.com/50' },
-    { id: 2, title: 'Actualización importante', date: '24/05/2024', description: 'Más detalles sobre el evento', link: 'https://example.com', image: 'https://via.placeholder.com/50' },
-    { id: 3, title: 'Aviso de seguridad', date: '24/05/2024', description: 'Medidas preventivas y recomendaciones', link: 'https://example.com', image: 'https://via.placeholder.com/50' },
-  ];
-  filteredNews: New[] = [...this.news];
+  news: New[] = [];
+  filteredNews: New[] = [];
   isModalOpen = false;
   isDeleteModalOpen = false;
+  isImageModalOpen = false;
   isEditing = false;
-  currentNewsId: number | null = null;
+  currentNewsId: string | null = null;
   newsToDelete: New | null = null;
+  currentImage: string | null = null;
 
   newTitle = new FormControl('', Validators.required);
   newDate = new FormControl('', [Validators.required, this.dateValidator]);
@@ -35,10 +35,19 @@ export class NewsComponent {
   newLink = new FormControl('');
   newImage = new FormControl('');
 
+  constructor(private newsService: NewsService) {}
+
+  ngOnInit() {
+    this.newsService.getNews().subscribe(news => {
+      this.news = news;
+      this.filteredNews = news;
+    });
+  }
+
   search() {
     const query = this.searchQuery.value?.toLowerCase() || '';
     this.filteredNews = this.news.filter(
-      (news) =>
+      news =>
         news.title.toLowerCase().includes(query) ||
         news.description.toLowerCase().includes(query)
     );
@@ -61,35 +70,35 @@ export class NewsComponent {
 
   saveNews() {
     if (this.isEditing && this.currentNewsId !== null) {
-      const newsItem = this.news.find(n => n.id === this.currentNewsId);
-      if (newsItem) {
-        newsItem.title = this.newTitle.value || '';
-        newsItem.date = this.newDate.value || '';
-        newsItem.description = this.newDescription.value || '';
-        newsItem.link = this.newLink.value || '';
-        newsItem.image = this.newImage.value || '';
-        this.search();
-        console.log('Noticia editada:', newsItem);
-      }
-    } else {
-      const newNews: New = {
-        id: this.news.length + 1,
+      const updatedNews: Partial<New> = {
         title: this.newTitle.value || '',
         date: this.newDate.value || '',
         description: this.newDescription.value || '',
         link: this.newLink.value || '',
         image: this.newImage.value || ''
       };
-      this.news.push(newNews);
-      this.search();
-      console.log('Noticia agregada:', newNews);
+      this.newsService.updateNews(this.currentNewsId, updatedNews).then(() => {
+        console.log('Noticia editada:', updatedNews);
+      });
+    } else {
+      const newNews: New = {
+        title: this.newTitle.value || '',
+        date: this.newDate.value || '',
+        description: this.newDescription.value || '',
+        link: this.newLink.value || '',
+        image: this.newImage.value || '',
+        active: true
+      };
+      this.newsService.addNews(newNews).then(() => {
+        console.log('Noticia agregada:', newNews);
+      });
     }
     this.closeModal();
   }
 
   editNews(news: New) {
     this.isEditing = true;
-    this.currentNewsId = news.id;
+    this.currentNewsId = news.id!;
     this.newTitle.setValue(news.title);
     this.newDate.setValue(news.date);
     this.newDescription.setValue(news.description);
@@ -109,11 +118,30 @@ export class NewsComponent {
   }
 
   confirmDelete() {
-    if (this.newsToDelete) {
-      this.news = this.news.filter((n) => n.id !== this.newsToDelete!.id);
-      this.search();
-      console.log('Noticia eliminada:', this.newsToDelete);
+    if (this.newsToDelete && this.newsToDelete.id) {
+      this.newsService.deleteNews(this.newsToDelete.id).then(() => {
+        console.log('Noticia eliminada:', this.newsToDelete);
+      });
       this.closeDeleteModal();
+    }
+  }
+
+  openImageModal(image: string) {
+    this.currentImage = image;
+    this.isImageModalOpen = true;
+  }
+
+  closeImageModal() {
+    this.currentImage = null;
+    this.isImageModalOpen = false;
+  }
+
+  toggleActive(news: New) {
+    if (news.id) {
+      const updatedNews: Partial<New> = { active: !news.active };
+      this.newsService.updateNews(news.id, updatedNews).then(() => {
+        console.log(`Noticia ${news.active ? 'desactivada' : 'activada'}:`, news);
+      });
     }
   }
 

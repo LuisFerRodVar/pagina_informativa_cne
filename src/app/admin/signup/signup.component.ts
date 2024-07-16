@@ -1,29 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  AngularFireAuth,
+  AngularFireAuthModule,
+} from '@angular/fire/compat/auth';
+import { Router, RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [],
+  imports: [AngularFireAuthModule, ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
+
   registroForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registroForm = this.fb.group({
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]]
+      contrasena: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  onSubmit(): void {
+  async onSubmit() {
     if (this.registroForm.valid) {
-      console.log('Formulario Enviado', this.registroForm.value);
-      // Aquí puedes manejar el envío del formulario, como enviarlo a un servidor
+      const email = this.registroForm.value['correo'];
+      const password = this.registroForm.value['contrasena'];
+      console.log({ email, password });
+
+      try {
+        const result = await this.auth.createUserWithEmailAndPassword(email, password);
+        console.log('Usuario registrado exitosamente', result);
+        this.router.navigate(['/admin/login']);
+      } catch (error) {
+        console.error('Error al registrar usuario', error);
+      }
     }
   }
 }
