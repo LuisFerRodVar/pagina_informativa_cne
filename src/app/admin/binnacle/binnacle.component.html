@@ -1,0 +1,57 @@
+<section>
+  <div class="table-container">
+    <h2>Agregar Bitacora</h2>
+    <div class="search-bar">
+      <div class="search">
+        <button routerLink="/admin/bitacoras" >Ver Bitacoras</button>
+      </div>
+
+      <button class="add-button" (click)="addBinnacle()">+ Agregar</button>
+    </div>
+    @if(isAdd){
+    <div>
+      <label for="date">Fecha:</label>
+      <input
+        id="date"
+        [(ngModel)]="date"
+        [ngModelOptions]="{ standalone: true }"
+        type="date"
+      />
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>Institución</th>
+          <th>Mesa</th>
+          <th>Correo</th>
+          <th>Asistio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let directory of directories; let i = index">
+          <td>{{ directory.name }}</td>
+          <td>{{ directory.job }}</td>
+          <td>{{ directory.institution }}</td>
+          <td>{{ directory.table }}</td>
+          <td>{{ directory.mail }}</td>
+          <td>
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              [(ngModel)]="directory.isAttendance"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <button class="add-button" (click)="save()">Guardar</button>
+    </div>
+    
+    }
+  </div>
+</section>

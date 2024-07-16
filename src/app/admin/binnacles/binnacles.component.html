@@ -1,0 +1,36 @@
+<section>
+  <div class="table-container">
+    <h2>Bitacora</h2>
+    <div class="search-bar">
+      <button class="add-button" (click)="exportAsExcelFile('bitacora')">Exportar a excel</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>Institución</th>
+          <th>Mesa</th>
+          <th>Correo</th>
+          <th>Fecha</th>
+
+          <th>Asistio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let directory of binnacles; let i = index">
+          <td>{{ directory.name }}</td>
+          <td>{{ directory.job }}</td>
+          <td>{{ directory.institution }}</td>
+          <td>{{ directory.table }}</td>
+          <td>{{ directory.date }}</td>
+          <td>{{ directory.mail }}</td>
+          <td>
+            {{ directory.isAttendance ? "Si" : "No" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

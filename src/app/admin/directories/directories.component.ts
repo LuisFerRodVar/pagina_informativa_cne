@@ -19,7 +19,9 @@ interface Directory {
 })
 export class DirectoriesComponent implements OnInit {
   searchQuery = new FormControl('');
-  directories: DirectoryDto[] = [];
+  directories: DirectoryDto[] = [
+   
+  ];
   filteredDirectories: DirectoryDto[] = [...this.directories];
   isModalOpen = false;
   isDeleteModalOpen = false;
@@ -37,7 +39,18 @@ export class DirectoriesComponent implements OnInit {
   constructor(private _directoryService: DirectoryService) {}
   ngOnInit(): void {
     this._directoryService.getAll().subscribe((res) => {
+      console.log(res);
       this.directories = res;
+      this.directories.sort((a, b) => {
+        if (a.table < b.table) {
+          return -1;
+        }
+        if (a.table > b.table) {
+          return 1;
+        }
+        return 0;
+      });
+      
       this.filteredDirectories = res;
     });
   }
@@ -88,18 +101,19 @@ export class DirectoriesComponent implements OnInit {
         table: this.directoryForm.get('mesa')!.value || '',
         mail: this.directoryForm.get('correo')!.value || '',
       };
-      //this.directories.push(newDirectory);
+      
       this.search();
-      console.log('Directorio agregado:', newDirectory);
-      const p = await this._directoryService.create(newDirectory);
-      console.log({ p });
+      
+    await this._directoryService.create(newDirectory);
+      
+      
     }
     this.closeModal();
   }
 
   editDirectory(directory: DirectoryDto) {
     this.isEditing = true;
-   /* this.currentDirectoryId = directory.id;
+    /* this.currentDirectoryId = directory.id;
    /* this.directoryForm.setValue({
       nombre: directory.nombre,
       cargo: directory.cargo,
@@ -111,7 +125,7 @@ export class DirectoriesComponent implements OnInit {
   }
 
   openDeleteModal(directory: DirectoryDto) {
-  //  this.directoryToDelete = directory;
+    //  this.directoryToDelete = directory;
     this.isDeleteModalOpen = true;
   }
 

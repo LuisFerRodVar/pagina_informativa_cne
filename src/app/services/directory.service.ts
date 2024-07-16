@@ -18,7 +18,8 @@ export class DirectoryService {
   }
 
   getAll(): Observable<DirectoryDto[]> {
-    return this.ref.valueChanges();
+    return this.db.collection<DirectoryDto>(this.dbPath, ref => ref.where('isActivate', '==', 1)).valueChanges();
+ 
   }
 
   async create(data: DirectoryDto): Promise<DocumentReference<DirectoryDto>> {

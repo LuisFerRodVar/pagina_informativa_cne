@@ -23,11 +23,9 @@ import { DirectoryService } from './services/directory.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private _directory: DirectoryService) {}
+  constructor(private router: Router) {}
   ngOnInit(): void {
-    this._directory.getAll().subscribe((res) => {
-      console.log({ res });
-    });
+
   }
   title = 'pagina_informativa_cne';
   faBars = faBars;
