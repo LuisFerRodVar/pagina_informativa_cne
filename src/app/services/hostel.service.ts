@@ -1,12 +1,18 @@
+
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 
 interface Hostel {
-  id?: string;
-  name: string;
-  ubication: string;
+  id: number;
+  nombre: string;
+  canton: string;
+  distrito: string;
+  comunidad: string;
+  responsable: string;
+  capacidad: number;
+  contacto: string;
 }
 
 @Injectable({
@@ -31,12 +37,30 @@ export class HostelsService {
     return this.firestore.collection(this.collectionName).add(news);
   }
 
-  updateHostels(id: string, news: Partial<Hostel>) {
-    return this.firestore.collection(this.collectionName).doc(id).update(news);
+  updateHostels(customId: number, news: Partial<Hostel>): Observable<void> {
+    return this.firestore.collection(this.collectionName, ref => ref.where("id", "==", customId)).snapshotChanges().pipe(
+      take(1),
+      switchMap(actions => {
+        if (actions.length === 0) {
+          throw new Error(`No hostel found with id: ${customId}`);
+        }
+        const docId = actions[0].payload.doc.id;
+        return this.firestore.collection(this.collectionName).doc(docId).update(news);
+      })
+    );
   }
 
-  deleteHostels(id: string) {
-    return this.firestore.collection(this.collectionName).doc(id).delete();
+  deleteHostels(customId: number): Observable<void> {
+    return this.firestore.collection(this.collectionName, ref => ref.where("id", "==", customId)).snapshotChanges().pipe(
+      take(1),
+      switchMap(actions => {
+        if (actions.length === 0) {
+          throw new Error(`No hostel found with id: ${customId}`);
+        }
+        const docId = actions[0].payload.doc.id;
+        return this.firestore.collection(this.collectionName).doc(docId).delete();
+      })
+    );
   }
 }
 

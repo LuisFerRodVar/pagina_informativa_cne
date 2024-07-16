@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { HostelsService } from '../../services/hostel.service';
 
 interface Hostel {
   id: number;
@@ -17,19 +19,24 @@ interface Hostel {
   templateUrl: './hostels.component.html',
   styleUrls: ['./hostels.component.css'],
 })
-export class HostelsComponent {
+export class HostelsComponent implements OnInit {
   searchQuery = new FormControl('');
-  hostels: Hostel[] = [
-    { id: 1, nombre: 'Hostel 1', canton: 'Cantón 1', distrito: 'Distrito 1', comunidad: 'Comunidad 1', responsable: 'Responsable 1', capacidad: 50, contacto: 'contacto1@example.com' },
-    { id: 2, nombre: 'Hostel 2', canton: 'Cantón 2', distrito: 'Distrito 2', comunidad: 'Comunidad 2', responsable: 'Responsable 2', capacidad: 30, contacto: 'contacto2@example.com' },
-    { id: 3, nombre: 'Hostel 3', canton: 'Cantón 3', distrito: 'Distrito 3', comunidad: 'Comunidad 3', responsable: 'Responsable 3', capacidad: 40, contacto: 'contacto3@example.com' },
-  ];
-  filteredHostels: Hostel[] = [...this.hostels];
+  hostels: Hostel[] = [];
+  filteredHostels: Hostel[] = [];
   isModalOpen = false;
   isDeleteModalOpen = false;
   isEditing = false;
   currentHostelId: number | null = null;
   hostelToDelete: Hostel | null = null;
+
+  constructor(private hostelService: HostelsService) { }
+
+  ngOnInit() {
+    this.hostelService.getHostels().subscribe(hostels => {
+      this.hostels = hostels;
+      this.filteredHostels = hostels;
+    });
+  }
 
   newNombre = new FormControl('', Validators.required);
   newCanton = new FormControl('', Validators.required);
@@ -68,23 +75,13 @@ export class HostelsComponent {
     this.isModalOpen = false;
   }
 
-  saveHostel() {
-    if (this.isEditing && this.currentHostelId !== null) {
-      const hostelItem = this.hostels.find(h => h.id === this.currentHostelId);
-      if (hostelItem) {
-        hostelItem.nombre = this.newNombre.value || '';
-        hostelItem.canton = this.newCanton.value || '';
-        hostelItem.distrito = this.newDistrito.value || '';
-        hostelItem.comunidad = this.newComunidad.value || '';
-        hostelItem.responsable = this.newResponsable.value || '';
-        hostelItem.capacidad = Number(this.newCapacidad.value) || 0;
-        hostelItem.contacto = this.newContacto.value || '';
-        this.search();
-        console.log('Albergue editado:', hostelItem);
-      }
-    } else {
-      const newHostel: Hostel = {
-        id: this.hostels.length + 1,
+
+
+saveHostel() {
+  if (this.isEditing && this.currentHostelId !== null) {
+    const hostelItem = this.hostels.find(h => h.id === this.currentHostelId);
+    if (hostelItem) {
+      const updatedHostel: Partial<Hostel> = {
         nombre: this.newNombre.value || '',
         canton: this.newCanton.value || '',
         distrito: this.newDistrito.value || '',
@@ -93,12 +90,31 @@ export class HostelsComponent {
         capacidad: Number(this.newCapacidad.value) || 0,
         contacto: this.newContacto.value || ''
       };
-      this.hostels.push(newHostel);
+      this.hostelService.updateHostels(this.currentHostelId, updatedHostel).subscribe(() => {
+        console.log('Albergue editado:', hostelItem);
+        this.search();
+      });
+    }
+  } else {
+    const newHostel: Hostel = {
+      id: this.hostels.length + 1,
+      nombre: this.newNombre.value || '',
+      canton: this.newCanton.value || '',
+      distrito: this.newDistrito.value || '',
+      comunidad: this.newComunidad.value || '',
+      responsable: this.newResponsable.value || '',
+      capacidad: Number(this.newCapacidad.value) || 0,
+      contacto: this.newContacto.value || ''
+    };
+    this.hostelService.addHostels(newHostel).then(() => {
       this.search();
       console.log('Albergue agregado:', newHostel);
-    }
-    this.closeModal();
+    });
   }
+  this.closeModal();
+}
+
+
 
   editHostel(hostel: Hostel) {
     this.isEditing = true;
@@ -125,10 +141,16 @@ export class HostelsComponent {
 
   confirmDelete() {
     if (this.hostelToDelete) {
-      this.hostels = this.hostels.filter((h) => h.id !== this.hostelToDelete!.id);
-      this.search();
-      console.log('Albergue eliminado:', this.hostelToDelete);
-      this.closeDeleteModal();
+      this.hostelService.deleteHostels(this.hostelToDelete.id).subscribe(() => {
+        console.log('Albergue eliminado:', this.hostelToDelete);
+        this.closeDeleteModal();
+        // Actualiza la lista de hostels después de eliminar
+        this.hostelService.getHostels().subscribe(hostels => {
+          this.hostels = hostels;
+          this.filteredHostels = hostels;
+        });
+      });
     }
   }
 }
+
